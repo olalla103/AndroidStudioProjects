@@ -1,9 +1,8 @@
-package com.example.ejercicio4;
+package com.example.ejercicio5;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 
 import androidx.activity.EdgeToEdge;
@@ -14,10 +13,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
-
-    public void llama(View view) {
-        Intent ejemplo = new Intent(Intent.ACTION_DIAL);
-        ejemplo.setData(Uri.parse("tel:NUMERO"));
+    public void abreCamara(View view) {
+        Intent ejemplo = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivity(ejemplo);
     }
 
