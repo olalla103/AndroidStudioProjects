@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
-<<<<<<< HEAD
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
-=======
-  <component name="ProjectRootManager">
->>>>>>> 745ff2e64bf2d4654b0c43c13c8e732b0c2ccb29
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
