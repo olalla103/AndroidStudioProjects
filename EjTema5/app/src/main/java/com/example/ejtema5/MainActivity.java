@@ -1,6 +1,8 @@
 package com.example.ejtema5;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,12 +15,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        TextView miTexto = (TextView) findViewById(R.id.texto);
+        miTexto.setText("Nuevo texto para mostrar");
+        miTexto.setTextColor(getResources().getColor(R.color.miColor));
+        miTexto.append("\n Nueva línea de texto");
+        // Uso de nuevas fuentes
+        Typeface miFuente = Typeface.createFromAsset(getAssets(), "fonts/Umbrella.ttf");
+        miTexto.setTypeface(miFuente);
     }
 }

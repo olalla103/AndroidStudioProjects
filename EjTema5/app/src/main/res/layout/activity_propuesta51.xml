@@ -5,13 +5,13 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Propuesta5_1">
 
     <TextView
-        android:id="@+id/texto"
+        android:id="@+id/texto5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Texto para mostrar"
+        android:text="Hoy es 17 de octubre"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
