@@ -15,8 +15,8 @@ public class p512 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_p511); // Asegúrate de que el nombre del layout sea correcto
-        TextView texto2 = (TextView) findViewById(R.id.texto2);
+        setContentView(R.layout.activity_p512); // Asegúrate de que el nombre del layout sea correcto
+        TextView texto2 = (TextView) findViewById(R.id.abueli);
         texto2.setTextColor(getResources().getColor(R.color.color));
         Typeface miFuente = Typeface.createFromAsset(getAssets(), "font/umbrella.ttf");
         texto2.setTypeface(miFuente);

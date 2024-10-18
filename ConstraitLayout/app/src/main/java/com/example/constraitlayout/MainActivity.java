@@ -11,21 +11,20 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        Button boton1 = findViewById(R.id.boton1);
+        Button boton2 = findViewById(R.id.boton2);
+        Button boton3 = findViewById(R.id.boton3);
+        Button boton4 = findViewById(R.id.boton4);
+        Button boton5 = findViewById(R.id.boton5);
 
         // Configuración de los listeners para cada botón
-        Button boton1 = findViewById(R.id.boton1);
         boton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -34,8 +33,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button boton2 = findViewById(R.id.boton2);
-        boton1.setOnClickListener(new View.OnClickListener() {
+
+        // BOTÓN 1
+        boton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, p512.class);
@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button boton3 = findViewById(R.id.boton3);
-        boton1.setOnClickListener(new View.OnClickListener() {
+
+        boton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, p513.class);
@@ -52,8 +52,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button boton4 = findViewById(R.id.boton4);
-        boton1.setOnClickListener(new View.OnClickListener() {
+
+        boton4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, p514.class);
@@ -61,14 +61,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button boton5 = findViewById(R.id.boton5);
-        boton1.setOnClickListener(new View.OnClickListener() {
+
+        boton5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, p515.class);
                 startActivity(intent);
             }
         });
+
+
+    }
+
+    @Override
+    public void onClick(View view) {
 
     }
 }

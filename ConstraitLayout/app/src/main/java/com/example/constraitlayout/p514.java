@@ -15,7 +15,7 @@ public class p514 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_p511); // Asegúrate de que el nombre del layout sea correcto
+        setContentView(R.layout.activity_p514); // Asegúrate de que el nombre del layout sea correcto
         TextView texto4 = (TextView) findViewById(R.id.texto4);
         texto4.append("\nTexto botón 4");
         texto4.setTextColor(getResources().getColor(R.color.miColor));

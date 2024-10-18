@@ -15,7 +15,7 @@ public class p515 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_p511); // Asegúrate de que el nombre del layout sea correcto
+        setContentView(R.layout.activity_p515); // Asegúrate de que el nombre del layout sea correcto
         TextView texto5 = (TextView) findViewById(R.id.texto5);
         texto5.append("\nHola");
         texto5.setTextColor(getResources().getColor(R.color.color));
