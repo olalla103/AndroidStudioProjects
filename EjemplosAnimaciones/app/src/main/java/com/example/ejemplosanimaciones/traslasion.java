@@ -15,8 +15,8 @@ public class traslasion extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Animation miAnimacion = AnimationUtils.loadAnimation(this, R.anim.traslacion);
-        miAnimacion.setRepeatMode(Animation.RESTART);
-        miAnimacion.setRepeatCount(20);
+        Animation translacion = AnimationUtils.loadAnimation(this, R.anim.traslacion);
+        translacion.setRepeatMode(Animation.RESTART);
+        translacion.setRepeatCount(20);
     }
 }
