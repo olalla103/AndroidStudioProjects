@@ -17,18 +17,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6cbdada3-0ad8-46fc-b78e-9b8975940a61" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../EjemplosAnimaciones/app/src/main/res/anim/rotacion.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/other.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EjemplosAnimaciones/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../EjemplosAnimaciones/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EjemplosAnimaciones/.idea/other.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EjemplosAnimaciones/app/src/main/java/com/example/ejemplosanimaciones/rotacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/../EjemplosAnimaciones/app/src/main/java/com/example/ejemplosanimaciones/rotacion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EjemplosAnimaciones/app/src/main/java/com/example/ejemplosanimaciones/traslasion.java" beforeDir="false" afterPath="$PROJECT_DIR$/../EjemplosAnimaciones/app/src/main/java/com/example/ejemplosanimaciones/traslasion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EjemplosAnimaciones/app/src/main/res/drawable/freya.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EjemplosAnimaciones/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../EjemplosAnimaciones/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EjemplosAnimaciones/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../EjemplosAnimaciones/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EjemplosAnimaciones/gradle/libs.versions.toml" beforeDir="false" afterPath="$PROJECT_DIR$/../EjemplosAnimaciones/gradle/libs.versions.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../InterfazCalculadora/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../InterfazCalculadora/.idea/misc.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,12 +80,12 @@
     &quot;assignee&quot;: &quot;olalla103&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "git@github.com:olalla103/AndroidStudioProjects.git",
-    "accountId": "b923b97e-3e93-4c18-895d-a1bc3dfd07ce"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:olalla103/AndroidStudioProjects.git&quot;,
+    &quot;accountId&quot;: &quot;b923b97e-3e93-4c18-895d-a1bc3dfd07ce&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -115,7 +104,7 @@
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/olaya/AndroidStudioProjects/Calculadora",
+    "last_opened_file_path": "C:/Users/olaya/AndroidStudioProjects/InterfazCalculadora",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.17",
     "project.structure.side.proportion": "0.2"

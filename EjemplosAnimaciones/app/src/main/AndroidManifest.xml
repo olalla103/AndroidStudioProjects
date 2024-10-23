@@ -13,10 +13,13 @@
         android:theme="@style/Theme.EjemplosAnimaciones"
         tools:targetApi="31">
         <activity
-            android:name=".rotacion"
+            android:name=".Aparece_desaparece"
             android:exported="false" />
         <activity
-            android:name=".traslasion"
+            android:name=".Rotacion"
+            android:exported="false" />
+        <activity
+            android:name=".Traslasion"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
