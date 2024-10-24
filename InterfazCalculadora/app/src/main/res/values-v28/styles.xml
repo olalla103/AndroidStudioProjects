@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="MyMaterialButtonStyleBis">
+        <item name="android:backgroundTint">#4CAF50</item>
+        <item name="android:buttonCornerRadius">16dp
+        </item> <!-- Usa cornerRadius para redondear los bordes -->
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+</resources>

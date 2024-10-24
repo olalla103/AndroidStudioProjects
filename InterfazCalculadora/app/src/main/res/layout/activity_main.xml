@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#B5A38E"
+    android:backgroundTint="#F4E48E"
     tools:context=".MainActivity">
 
     <GridLayout
@@ -21,75 +22,137 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
+            android:id="@+id/divide"
             android:layout_column="3"
             android:backgroundTint="#B39EB5"
             android:text="/" />
 
         <Button
+            android:id="@+id/uno"
             android:backgroundTint="#F4B5C3"
             android:text="1" />
 
         <Button
+            android:id="@+id/dos"
             android:backgroundTint="#F4B5C3"
             android:text="2" />
 
         <Button
+            android:id="@+id/tres"
             android:backgroundTint="#F4B5C3"
             android:text="3" />
 
         <Button
+            android:id="@+id/multiplica"
             android:backgroundTint="#F4E48E"
             android:text="*" />
 
         <Button
+            android:id="@+id/cuatro"
             android:backgroundTint="#A8DBDA"
             android:text="4" />
 
         <Button
+            android:id="@+id/cinco"
             android:backgroundTint="#A8DBDA"
             android:text="5" />
 
         <Button
+            android:id="@+id/seis"
             android:backgroundTint="#A8DBDA"
             android:text="6" />
 
         <Button
+            android:id="@+id/menos"
             android:backgroundTint="#F4E48E"
             android:text="-" />
 
         <Button
+            android:id="@+id/siete"
             android:backgroundTint="#A8DBDA"
             android:text="7" />
 
         <Button
+            android:id="@+id/ocho"
             android:backgroundTint="#A8DBDA"
             android:text="8" />
 
         <Button
+            android:id="@+id/nueve"
             android:backgroundTint="#A8DBDA"
             android:text="9" />
 
         <Button
+            android:id="@+id/suma"
             android:layout_rowSpan="3"
             android:layout_gravity="fill"
             android:backgroundTint="#F4E48E"
             android:text="+" />
 
         <Button
+            android:id="@+id/cero"
             android:layout_columnSpan="2"
             android:layout_gravity="fill"
             android:backgroundTint="#A8DBDA"
             android:text="0" />
 
         <Button
+            android:id="@+id/ceroCero"
             android:backgroundTint="#F4E48E"
             android:text="00" />
 
         <Button
+            android:id="@+id/igual"
+            android:layout_width="226dp"
             android:layout_columnSpan="3"
             android:layout_gravity="fill"
             android:backgroundTint="#F4B5C3"
             android:text="=" />
+
+        <Button
+            android:id="@+id/potencia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="2"
+            android:backgroundTint="#B39EB5"
+            android:text="^" />
+
+        <Button
+            android:id="@+id/punto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:backgroundTint="#B39EB5"
+            android:text="." />
+
+    </GridLayout>
+
+    <GridLayout
+        android:id="@+id/visor"
+        android:layout_width="292dp"
+        android:layout_height="56dp"
+        android:layout_gravity="center"
+        android:background="#E2D680"
+        android:columnCount="4"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.211">
+
+        <EditText
+            android:id="@+id/editTextNumberDecimal2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:backgroundTint="#F4E48E"
+            android:ems="10"
+            android:inputType="numberDecimal" />
     </GridLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
