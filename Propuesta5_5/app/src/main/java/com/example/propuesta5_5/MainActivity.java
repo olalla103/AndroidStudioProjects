@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
         RadioGroup miGrupo = (RadioGroup) findViewById(R.id.grupi);
 
 
-        //miGrupo.clearCheck(); // limpiamos los checks que estén dados
         // hacemos un listener para ver el botón que está marcado
         final String[] textoBoton = {""};
         miGrupo.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
