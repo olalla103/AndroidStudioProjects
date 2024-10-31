@@ -1,0 +1,6 @@
+<resources>
+
+    <style name="barra" parent="Widget.AppCompat.AutoCompleteTextView">
+        <item name="android:backgroundTint">#FF0000</item>
+    </style>
+</resources>
