@@ -45,30 +45,30 @@ public class MainActivity extends AppCompatActivity {
                     TextView texto_inferior_entrada = (TextView) view.findViewById(R.id.texto_datos);
                     ImageView imagen_entrada = (ImageView) view.findViewById(R.id.imagen);
                     RadioButton miRadio = (RadioButton) view.findViewById(R.id.boton);
-                    texto_superior_entrada.setText(((Encapsulador) entrada).get_textoTitulo());
-                    texto_inferior_entrada.setText(((Encapsulador) entrada).get_textoContenido());
-                    imagen_entrada.setImageResource(((Encapsulador) entrada).get_idImagen());
 
+                    Encapsulador encapsulador = (Encapsulador) entrada; // Obtener el objeto Encapsulador actual
+
+                    // Configurar los datos
+                    texto_superior_entrada.setText(encapsulador.get_textoTitulo());
+                    texto_inferior_entrada.setText(encapsulador.get_textoContenido());
+                    imagen_entrada.setImageResource(encapsulador.get_idImagen());
+
+                    // Configurar el listener del RadioButton para mostrar la descripción en lugar de "MARCADA UNA OPCION"
                     miRadio.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+                            // Desmarcar el RadioButton anterior si existe
                             if (radioButton_pulsado != null) radioButton_pulsado.setChecked(false);
-                            radioButton_pulsado = (RadioButton) v;
-                            texto.setText("MARCADA UNA OPCION");
+
+                            // Marcar el nuevo RadioButton y guardarlo como el seleccionado
+                            radioButton_pulsado = miRadio;
+                            radioButton_pulsado.setChecked(true); // Asegurar que el actual se marque
+
+                            // Mostrar la descripción del elemento seleccionado
+                            texto.setText(encapsulador.get_textoContenido());
                         }
                     });
-
-
                 }
-            }
-        });
-
-        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
-                Encapsulador elegido = (Encapsulador) adapterView.getItemAtPosition(i);
-                CharSequence textoElegido = "Seleccionado: " + elegido.get_textoContenido();
-                texto.setText(textoElegido);
             }
         });
 
