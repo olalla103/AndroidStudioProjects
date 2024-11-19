@@ -29,10 +29,13 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<Encapsulador> datos = new ArrayList<Encapsulador>();
 
         // tengo que cambiar las imágenes
-        datos.add(new Encapsulador(R.drawable.ima3, "DONUTS", "El 15 de septiembre de 2009, fue lanzado el SDK de Android 1.6 Donut, basado en el núcleo Linux 2.6.29. En la actualización se incluyen numerosas características nuevas.", true));
-        datos.add(new Encapsulador(R.drawable.ima2, "FROYO", "El 20 de mayo de 2010, El SDK de Android 2.2 Froyo (Yogur helado) fue lanzado, basado en el núcleo Linux 2.6.32.", false));
-        datos.add(new Encapsulador(R.drawable.ima3, "GINGERBREAD", "El 6 de diciembre de 2010, el SDK de Android 2.3 Gingerbread (Pan de Jengibre) fue lanzado, basado en el núcleo Linux 2.6.35.", false));
-        datos.add(new Encapsulador(R.drawable.ima4, "HONEYCOMB", "El 22 de febrero de 2011, sale el SDK de Android 3.0 Honeycomb (Panal de Miel). Fue la primera actualización exclusiva para TV y tableta, lo que quiere decir que sólo es apta para TV y tabletas y no para teléfonos Android.", false));
+        datos.add(new Encapsulador(R.drawable.camisetanegraZara, "Camiseta negra", "Camiseta negra de manga larga y tejido de canalé (textura acanalada). Tiene un escote redondeado y amplio, con un pequeño detalle de lazo decorativo en la parte superior del centro. Es ajustada al cuerpo.", true));
+        datos.add(new Encapsulador(R.drawable.vestidoLentejuelasZara, "Vestido lentejuelas", "El vestido está decorado completamente con lentejuelas multicolor que forman un patrón brillante en tonos rosados, dorados y plateados. Es un vestido midi con un corte ajustado y detalles distintivos: el escote es cruzado en la parte superior, dejando una pequeña abertura en el centro del pecho, y tiene un diseño halter con tiras que se atan en el cuello. ", false));
+        datos.add(new Encapsulador(R.drawable.vestidoLentejuelasZara, "Bolso marrón cuero", "diseño tipo hobo, amplio y funcional. Está en cuero de color marrón oscuro, con un acabado liso y elegante. Cuenta con dos cremalleras decorativas en la parte frontal que añaden un toque moderno", false));
+        datos.add(new Encapsulador(R.drawable.vestidoLentejuelasZara, "Vaquero Balloon", "", false));
+        datos.add(new Encapsulador(R.drawable.vestidoLentejuelasZara, "", "", false));
+        datos.add(new Encapsulador(R.drawable.vestidoLentejuelasZara, "", "", false));
+
 
         lista.setAdapter(new Adaptador(this, R.layout.entrada, datos) {
             @Override
