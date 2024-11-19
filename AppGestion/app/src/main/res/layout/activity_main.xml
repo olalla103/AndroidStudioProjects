@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -7,22 +7,4 @@
     android:gravity="center"
     android:orientation="vertical"
     android:paddingTop="30dp"
-    tools:context=".MainActivity">
-
-    <ListView
-        android:id="@+id/lista"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5" />
-
-    <TextView
-        android:id="@+id/texto"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="TOCA UNA OPCION"
-        android:textColor="#ff0000"
-        android:textStyle="bold" />
-
-</LinearLayout>
+    tools:context=".MainActivity"/>
