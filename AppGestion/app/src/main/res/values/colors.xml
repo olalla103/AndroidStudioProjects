@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="monaLisa">#FD9E8D</color>
+    <color name="peachYellow">#F9DBAC</color>
+    <color name="mariGold">#E78B2D</color>
+    <color name="moss">#34513A</color>
+    <color name="peachFuzz">#FFBE98</color>
 </resources>
