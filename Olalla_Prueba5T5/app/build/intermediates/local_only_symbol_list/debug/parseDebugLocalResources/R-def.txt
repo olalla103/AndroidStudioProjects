@@ -1,0 +1,27 @@
+R_DEF: Internal format may change without notice
+local
+anim aparece_desaparece
+anim traslacion
+color black
+color white
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+id autoCompletado
+id bt1
+id bt2
+id bt3
+id img
+id main
+id miImagen
+layout activity_actividad1
+layout activity_actividad2
+layout activity_actividad3
+layout activity_main
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+style Base.Theme.Olalla_Prueba5T5
+style Theme.Olalla_Prueba5T5
+style barra
+xml backup_rules
+xml data_extraction_rules

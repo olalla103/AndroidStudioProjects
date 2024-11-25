@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">Olalla_Prueba5T5</string>
+    <style name="Base.Theme.Olalla_Prueba5T5" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="Theme.Olalla_Prueba5T5" parent="Base.Theme.Olalla_Prueba5T5"/>
+    <style name="barra" parent="Widget.AppCompat.AutoCompleteTextView">
+        <item name="android:backgroundTint">#FF0000</item>
+    </style>
+</resources>
