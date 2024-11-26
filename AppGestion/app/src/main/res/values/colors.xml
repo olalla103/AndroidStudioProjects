@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="primary">#FF0000</color>
+    <color name="accent">#FF0000</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="monaLisa">#FD9E8D</color>
@@ -7,4 +9,13 @@
     <color name="mariGold">#E78B2D</color>
     <color name="moss">#34513A</color>
     <color name="peachFuzz">#FFBE98</color>
+
+    <!-- Colores predeterminados -->
+    <color name="colorPrimary">#FF6200EE</color>
+    <color name="colorSecondary">#03DAC5</color>
+    <color name="colorBackground">#FFFFFF</color>
+    <color name="colorSurface">#FFFFFF</color>
+    <color name="colorAccent">#FF4081</color>
+
+
 </resources>

@@ -8,4 +8,12 @@
         <item name="android:typeface">monospace</item>
 
     </style>
+
+    <style name="TemaPinterest">
+        <item name="monaLisa">@color/monaLisa</item>
+        <item name="peachYellow">@color/peachYellow</item>
+        <item name="mariGold">@color/mariGold</item>
+        <item name="moss">@color/moss</item>
+        <item name="peachFuzz">@color/peachFuzz</item>
+    </style>
 </resources>

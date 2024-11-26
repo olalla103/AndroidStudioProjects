@@ -46,7 +46,7 @@ public class ListaElementos extends AppCompatActivity {
                     ImageView imagen_entrada = (ImageView) view.findViewById(R.id.imagen);
                     RadioButton miRadio = (RadioButton) view.findViewById(R.id.boton);
 
-                    MainActivity.Encapsulador encapsulador = (MainActivity.Encapsulador) entrada; // Obtener el objeto Encapsulador actual
+                    Encapsulador encapsulador = (Encapsulador) entrada; // Obtener el objeto Encapsulador actual
 
                     // Configurar los datos
                     texto_superior_entrada.setText(encapsulador.get_textoTitulo());
