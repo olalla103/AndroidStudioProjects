@@ -1,6 +1,11 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Theme.AppCompat" parent="Theme.MaterialComponents.DayNight">
-        <!-- Usualmente contiene configuraciones para colores y componentes del sistema -->
+    <!-- Tema base para la aplicación -->
+    <style name="Theme.App" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Define los colores de tu aplicación -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorSecondary">@color/teal_200</item>
     </style>
+
+    <style name="Theme.App.Dark" parent="Theme.MaterialComponents.DayNight"></style>
 </resources>
