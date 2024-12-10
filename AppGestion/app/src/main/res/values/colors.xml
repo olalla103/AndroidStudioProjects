@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_500">#6200EE</color>
-    <color name="purple_700">#3700B3</color>
-    <color name="teal_200">#03DAC5</color>
-    <color name="white">#FFFFFF</color>
-    <color name="black">#000000</color>
+    <!-- Colores personalizados -->
+    <color name="colorPrimary">#F48FB1</color> <!-- Rosa Claro -->
+    <color name="colorPrimaryDark">#F06292</color> <!-- Rosa más oscuro -->
+    <color name="colorAccent">#F50057</color> <!-- Rosa fuerte -->
+    <color name="textColorPrimary">#000000</color> <!-- Texto negro para buen contraste -->
+    <color name="textColorSecondary">#FFFFFF</color> <!-- Texto blanco -->
+    <color name="backgroundColor">#FCE4EC</color> <!-- Rosa muy suave para el fondo -->
+    <color name="buttonColor">#EC407A</color> <!-- Rosa brillante para botones -->
+
+    <!-- Colores de Material Design, si los necesitas -->
+    <color name="purple_500">#9C27B0</color>
+    <color name="purple_700">#7B1FA2</color>
+    <color name="teal_200">#80CBC4</color>
 </resources>

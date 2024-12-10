@@ -1,20 +1,66 @@
 package com.example.appgestion;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioGroup;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class AniadirElemento extends AppCompatActivity {
+
+    private EditText nombrePrenda, descripcionPrenda;
+    private RadioGroup estiloPrenda;
+    private Button botonAceptar, botonCancelar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_aniadir_elemento);
 
+        // Inicializar componentes
+        nombrePrenda = findViewById(R.id.editTextText);
+        descripcionPrenda = findViewById(R.id.editTextTextMultiLine);
+        estiloPrenda = findViewById(R.id.estiloPrenda);
+        botonAceptar = findViewById(R.id.button3);
+        botonCancelar = findViewById(R.id.button4);
+
+        // Configurar evento para el botón "Aceptar"
+        botonAceptar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Obtener datos ingresados
+                String nombre = nombrePrenda.getText().toString().trim();
+                String descripcion = descripcionPrenda.getText().toString().trim();
+                int estiloId = estiloPrenda.getCheckedRadioButtonId();
+
+                // Determinar el estilo seleccionado
+                String estilo = "";
+                if (estiloId == R.id.femenino) estilo = "Femenino";
+                else if (estiloId == R.id.masculino) estilo = "Masculino";
+                else if (estiloId == R.id.neutro) estilo = "Neutro";
+
+                // Pasar datos a la actividad principal
+                Intent intent = new Intent();
+                intent.putExtra("nombre", nombre);
+                intent.putExtra("descripcion", descripcion);
+                intent.putExtra("estilo", estilo);
+
+                setResult(RESULT_OK, intent);
+                finish(); // Finalizar la actividad
+            }
+        });
+
+        // Configurar evento para el botón "Cancelar"
+        botonCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Cancelar la operación y volver a la actividad anterior
+                setResult(RESULT_CANCELED);
+                finish();
+            }
+        });
     }
 }

@@ -1,48 +1,62 @@
 package com.example.appgestion;
 
-import android.content.Context;
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.BaseAdapter;
 
 import java.util.ArrayList;
 
-public abstract class Adaptador extends BaseAdapter {
-    private ArrayList<?> entradas;
-    private int R_layout_idView;
-    private Context contexto;
+public class Adaptador extends BaseAdapter {
 
-    public Adaptador(Context contexto, int R_layout_idView, ArrayList<?> entradas) {
-        super();
-        this.contexto = contexto;
-        this.entradas = entradas;
-        this.R_layout_idView = R_layout_idView;
+    private Activity context;
+    private int layout;
+    private ArrayList<ListaElementos.Encapsulador> datos;
+
+    // Constructor
+    public Adaptador(Activity context, int layout, ArrayList<ListaElementos.Encapsulador> datos) {
+        this.context = context;
+        this.layout = layout;
+        this.datos = datos;
     }
 
-    public abstract void onEntrada(Object entrada, View view);
-
+    @Override
     public int getCount() {
-        return entradas.size();
+        return datos.size();
     }
 
-    public Object getItem(int posicion) {
-        return entradas.get(posicion);
+    @Override
+    public Object getItem(int position) {
+        return datos.get(position);
     }
 
-    public long getItemId(int posicion) {
-        return posicion;
+    @Override
+    public long getItemId(int position) {
+        return position;
     }
 
-    public View getView(int posicion, View view, ViewGroup pariente) {
-        if (view == null) {
-            LayoutInflater vi = (LayoutInflater)
-                    contexto.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = vi.inflate(R_layout_idView, pariente, false);
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        // Si la vista ya está creada, reutilízala, si no, infla una nueva vista
+        if (convertView == null) {
+            LayoutInflater inflater = context.getLayoutInflater();
+            convertView = inflater.inflate(layout, null);
         }
-        onEntrada(entradas.get(posicion), view);
-        return view;
+
+        // Obtén las vistas dentro de la fila (en este caso, la imagen y el texto)
+        TextView textoTitulo = convertView.findViewById(R.id.texto_titulo);
+        ImageView imagenPrenda = convertView.findViewById(R.id.imagen);
+
+        // Obtén el elemento actual
+        ListaElementos.Encapsulador elemento = datos.get(position);
+
+        // Configura los valores de las vistas
+        textoTitulo.setText(elemento.get_textoTitulo());
+        imagenPrenda.setImageResource(elemento.get_idImagen());
+
+        return convertView;
     }
-
-
 }
