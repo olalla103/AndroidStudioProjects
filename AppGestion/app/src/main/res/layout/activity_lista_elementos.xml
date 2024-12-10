@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#D500F9"
+        android:minHeight="56dp"
         android:title="Mi Aplicación Rosa"
         android:titleTextColor="#FFFFFF" />
 
