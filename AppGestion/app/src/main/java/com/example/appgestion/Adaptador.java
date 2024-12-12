@@ -4,9 +4,12 @@ import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.BaseAdapter;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -24,6 +27,46 @@ public class Adaptador extends BaseAdapter {
     }
 
     @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        if (convertView == null) {
+            LayoutInflater inflater = LayoutInflater.from(context);
+            convertView = inflater.inflate(R.layout.entrada, parent, false);
+        }
+
+        ListaElementos.Encapsulador elemento = (ListaElementos.Encapsulador) getItem(position);
+
+        // Configurar texto e imagen
+        TextView titulo = convertView.findViewById(R.id.texto_titulo);
+        titulo.setText(elemento.get_descripcion());
+
+        ImageView imagen = convertView.findViewById(R.id.imagen);
+        imagen.setImageResource(elemento.get_imagen());
+
+        // Configurar el botón del menú
+        ImageButton botonMenu = convertView.findViewById(R.id.boton_menu);
+        botonMenu.setOnClickListener(v -> {
+            PopupMenu popupMenu = new PopupMenu(context, botonMenu);
+            popupMenu.inflate(R.menu.menu_item);
+            popupMenu.setOnMenuItemClickListener(item -> {
+                if (item.getItemId() == R.id.opcion_editar) {
+                    Toast.makeText(context, "Editar: " + elemento.get_descripcion(), Toast.LENGTH_SHORT).show();
+                    return true;
+                } else if (item.getItemId() == R.id.opcion_eliminar) {
+                    datos.remove(position);
+                    notifyDataSetChanged();
+                    Toast.makeText(context, "Elemento eliminado", Toast.LENGTH_SHORT).show();
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+            popupMenu.show();
+        });
+
+        return convertView;
+    }
+
+    @Override
     public int getCount() {
         return datos.size();
     }
@@ -38,7 +81,7 @@ public class Adaptador extends BaseAdapter {
         return position;
     }
 
-    @Override
+   /* @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // Si la vista ya está creada, reutilízala, si no, infla una nueva vista
         if (convertView == null) {
@@ -58,5 +101,5 @@ public class Adaptador extends BaseAdapter {
         imagenPrenda.setImageResource(elemento.get_idImagen());
 
         return convertView;
-    }
+    }*/
 }

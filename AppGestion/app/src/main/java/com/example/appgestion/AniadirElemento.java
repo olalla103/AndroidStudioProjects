@@ -3,16 +3,18 @@ package com.example.appgestion;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class AniadirElemento extends AppCompatActivity {
 
     private EditText nombrePrenda, descripcionPrenda;
-    private RadioGroup estiloPrenda;
+    private Spinner estiloPrenda;
     private Button botonAceptar, botonCancelar;
 
     @Override
@@ -23,9 +25,15 @@ public class AniadirElemento extends AppCompatActivity {
         // Inicializar componentes
         nombrePrenda = findViewById(R.id.editTextText);
         descripcionPrenda = findViewById(R.id.editTextTextMultiLine);
-        estiloPrenda = findViewById(R.id.estiloPrenda);
+        estiloPrenda = findViewById(R.id.spinnerEstilo); // Cambiado a Spinner
         botonAceptar = findViewById(R.id.button3);
         botonCancelar = findViewById(R.id.button4);
+
+        // Configurar opciones del Spinner si no están predefinidas en XML
+        ArrayAdapter<String> adaptador = new ArrayAdapter<>(
+                this, android.R.layout.simple_spinner_item, new String[]{"Femenino", "Masculino", "Neutro"});
+        adaptador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        estiloPrenda.setAdapter(adaptador);
 
         // Configurar evento para el botón "Aceptar"
         botonAceptar.setOnClickListener(new View.OnClickListener() {
@@ -34,13 +42,7 @@ public class AniadirElemento extends AppCompatActivity {
                 // Obtener datos ingresados
                 String nombre = nombrePrenda.getText().toString().trim();
                 String descripcion = descripcionPrenda.getText().toString().trim();
-                int estiloId = estiloPrenda.getCheckedRadioButtonId();
-
-                // Determinar el estilo seleccionado
-                String estilo = "";
-                if (estiloId == R.id.femenino) estilo = "Femenino";
-                else if (estiloId == R.id.masculino) estilo = "Masculino";
-                else if (estiloId == R.id.neutro) estilo = "Neutro";
+                String estilo = estiloPrenda.getSelectedItem().toString(); // Obtener opción seleccionada
 
                 // Pasar datos a la actividad principal
                 Intent intent = new Intent();
@@ -63,4 +65,5 @@ public class AniadirElemento extends AppCompatActivity {
             }
         });
     }
+
 }
