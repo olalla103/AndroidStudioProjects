@@ -2,17 +2,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F8E0F1"
-    android:orientation="vertical"
-    android:paddingLeft="10dp"
-    android:paddingTop="20dp"
-    android:paddingRight="10dp"> <!-- Fondo rosa claro -->
+    android:orientation="vertical">
 
     <!-- Toolbar -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#D500F9"
+        android:background="#FF82C3"
         android:minHeight="56dp"
         android:title="Mi Aplicación Rosa"
         android:titleTextColor="#FFFFFF" />
@@ -21,18 +18,10 @@
     <ListView
         android:id="@+id/lista"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:background="#FFF0F6"
         android:divider="@android:color/darker_gray"
-        android:dividerHeight="1dp" /> <!-- Fondo rosa pálido para la lista -->
+        android:dividerHeight="1dp" />
 
-    <!-- Botón -->
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="#E91E63"
-        android:padding="10dp"
-        android:text="Aceptar"
-        android:textColor="#FFFFFF" />
 </LinearLayout>

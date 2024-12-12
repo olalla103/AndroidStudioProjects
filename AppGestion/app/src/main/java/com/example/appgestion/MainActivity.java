@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
         Button loginButton = findViewById(R.id.entrarButton);
 
         // Pulsar el botón de validación
-        // Pulsar el botón de validación
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,23 +58,7 @@ public class MainActivity extends AppCompatActivity {
                     layout.setOrientation(LinearLayout.HORIZONTAL);
                     layout.setPadding(10, 10, 10, 10);
 
-                    // Crear un ImageView para la imagen
-                    ImageView imageView = new ImageView(MainActivity.this);  // Usa MainActivity.this para obtener el contexto
-                    imageView.setImageResource(R.drawable.tostada);  // Usa tu imagen aquí
-
-                    // Crear un TextView para el mensaje
-                    TextView textView = new TextView(MainActivity.this);  // Usa MainActivity.this para obtener el contexto
-                    textView.setText("Este es un toast con imagen!");
-                    textView.setTextColor(Color.WHITE);  // Puedes poner cualquier color
-                    textView.setTextSize(16);
-
-                    // Añadir la imagen y el texto al layout
-                    layout.addView(imageView);
-                    layout.addView(textView);
-
-                    // Establecer el layout en el Toast
-                    toast.setView(layout);
-                    toast.show();
+                    Toast.makeText(MainActivity.this, "Sesión iniciada con éxito", Toast.LENGTH_SHORT).show();
 
                     // Vamos a la actividad de la lista de la ropa
                     Intent intent = new Intent(MainActivity.this, ListaElementos.class);

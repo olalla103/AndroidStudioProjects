@@ -1,6 +1,7 @@
 package com.example.appgestion;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,9 +36,15 @@ public class Adaptador extends BaseAdapter {
 
         ListaElementos.Encapsulador elemento = (ListaElementos.Encapsulador) getItem(position);
 
-        // Configurar texto e imagen
+        // Configurar el nombre de la prenda o estilo, con comprobación de null
         TextView titulo = convertView.findViewById(R.id.texto_titulo);
-        titulo.setText(elemento.get_descripcion());
+
+        // Comprobamos si el estilo es null antes de acceder a su nombre
+        if (elemento.get_estilo() != null) {
+            titulo.setText(elemento.get_estilo().name()); // Si el estilo no es null, mostramos su nombre
+        } else {
+            titulo.setText("Estilo no asignado"); // Si es null, mostramos un mensaje predeterminado
+        }
 
         ImageView imagen = convertView.findViewById(R.id.imagen);
         imagen.setImageResource(elemento.get_imagen());
@@ -49,9 +56,25 @@ public class Adaptador extends BaseAdapter {
             popupMenu.inflate(R.menu.menu_item);
             popupMenu.setOnMenuItemClickListener(item -> {
                 if (item.getItemId() == R.id.opcion_editar) {
+                    // Cuando se selecciona la opción "editar"
                     Toast.makeText(context, "Editar: " + elemento.get_descripcion(), Toast.LENGTH_SHORT).show();
+
+                    // Crear un Intent para abrir la actividad de edición
+                    Intent intent = new Intent(context, ModificarElemento.class);
+                    // Pasar los datos del elemento a modificar
+                    intent.putExtra("imagen", elemento.get_imagen());
+                    intent.putExtra("titulo", elemento.get_titulo());
+                    intent.putExtra("descripcion", elemento.get_descripcion());
+                    intent.putExtra("estilo", elemento.get_estilo() != null ? elemento.get_estilo().name() : ""); // Asegurarse de pasar un valor no nulo
+                    intent.putExtra("favorito", elemento.is_favorito());
+                    intent.putExtra("position", position);
+
+                    // Iniciar la actividad para recibir resultados (para editar)
+                    context.startActivityForResult(intent, 2);
+
                     return true;
                 } else if (item.getItemId() == R.id.opcion_eliminar) {
+                    // Eliminar el elemento de la lista
                     datos.remove(position);
                     notifyDataSetChanged();
                     Toast.makeText(context, "Elemento eliminado", Toast.LENGTH_SHORT).show();
@@ -65,6 +88,8 @@ public class Adaptador extends BaseAdapter {
 
         return convertView;
     }
+
+
 
     @Override
     public int getCount() {
@@ -81,25 +106,11 @@ public class Adaptador extends BaseAdapter {
         return position;
     }
 
-   /* @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        // Si la vista ya está creada, reutilízala, si no, infla una nueva vista
-        if (convertView == null) {
-            LayoutInflater inflater = context.getLayoutInflater();
-            convertView = inflater.inflate(layout, null);
-        }
-
-        // Obtén las vistas dentro de la fila (en este caso, la imagen y el texto)
-        TextView textoTitulo = convertView.findViewById(R.id.texto_titulo);
-        ImageView imagenPrenda = convertView.findViewById(R.id.imagen);
-
-        // Obtén el elemento actual
+    // Método para actualizar un elemento después de editarlo
+    public void actualizarElemento(int position, String nuevaDescripcion, String nuevoEstilo) {
         ListaElementos.Encapsulador elemento = datos.get(position);
-
-        // Configura los valores de las vistas
-        textoTitulo.setText(elemento.get_textoTitulo());
-        imagenPrenda.setImageResource(elemento.get_idImagen());
-
-        return convertView;
-    }*/
+        elemento.setDescripcion(nuevaDescripcion);
+        elemento.setEstilo(nuevoEstilo);  // Asumimos que tienes un setter para el estilo
+        notifyDataSetChanged();
+    }
 }
