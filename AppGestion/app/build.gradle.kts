@@ -31,18 +31,12 @@ android {
     }
 }
 
-// Añade esta sección para los repositorios
-repositories {
-    google()
-    mavenCentral()
-}
-
 dependencies {
+
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
-    implementation("com.github.PhilJay:MPAndroidChart:3.1.0") // Corregido
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

@@ -31,7 +31,12 @@ public class ListaElementos extends AppCompatActivity {
         // Datos de ejemplo
         datos.add(new PrendaRopa("Camiseta negra", "M", Estilos.Femenino, 19.99, R.drawable.camisetanegra_mujer));
         datos.add(new PrendaRopa("Vaqueros", "L", Estilos.Neutro, 39.99, R.drawable.vaqueroballoon_mujer));
-        datos.add(new PrendaRopa("Chaqueta", "XL", Estilos.Masculino, 59.99, R.drawable.chaquetaacolchada_hombre));
+        datos.add(new PrendaRopa("Bolso", "M", Estilos.Neutro, 61.99, R.drawable.bolsomarron));
+        datos.add(new PrendaRopa("Falda plisada", "S", Estilos.Femenino, 19.99, R.drawable.faldaplisadapicos_mujer));
+        datos.add(new PrendaRopa("Vestido Lentejuelas", "S", Estilos.Femenino, 35.99, R.drawable.vestidolentejuelas_mujer));
+        datos.add(new PrendaRopa("Chaqueta acolchada", "XL", Estilos.Masculino, 59.99, R.drawable.chaquetaacolchada_hombre));
+        datos.add(new PrendaRopa("Chaqueta cuero", "L", Estilos.Neutro, 99.99, R.drawable.chaquetacuero_hombre));
+
 
         adaptador = new Adaptador(this, R.layout.entrada, datos);
         lista.setAdapter(adaptador);
@@ -56,13 +61,6 @@ public class ListaElementos extends AppCompatActivity {
             return true;
         }
 
-        if (id == R.id.ver_estadisticas) {
-            Intent intent = new Intent(this, EstadisticasActivity.class);
-            intent.putExtra("datos", datos); // Pasa la lista de prendas
-            startActivity(intent);
-            return true;
-        }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -71,7 +69,7 @@ public class ListaElementos extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
-            // Recuperar datos del Intent
+            // Agregar un nuevo elemento
             String nombre = data.getStringExtra("nombre");
             String talla = data.getStringExtra("talla");
             String estiloString = data.getStringExtra("estilo");
@@ -85,6 +83,29 @@ public class ListaElementos extends AppCompatActivity {
                 adaptador.notifyDataSetChanged();
             }
         }
+
+        if (requestCode == 2 && resultCode == RESULT_OK && data != null) {
+            // Editar un elemento existente
+            int position = data.getIntExtra("position", -1);
+            String nombre = data.getStringExtra("nombre");
+            String talla = data.getStringExtra("talla");
+            String estiloString = data.getStringExtra("estilo");
+            double precio = data.getDoubleExtra("precio", 0.0);
+            int imagen = data.getIntExtra("imagen", R.drawable.imagen_defecto);
+
+            if (position >= 0 && nombre != null && talla != null && estiloString != null) {
+                Estilos estilo = Estilos.valueOf(estiloString);
+                PrendaRopa prenda = datos.get(position);
+                prenda.setNombre(nombre);
+                prenda.setTalla(talla);
+                prenda.setEstilo(estilo);
+                prenda.setPrecio(precio);
+                prenda.setImagen(imagen);
+                adaptador.notifyDataSetChanged();
+            }
+        }
     }
+
+
 
 }

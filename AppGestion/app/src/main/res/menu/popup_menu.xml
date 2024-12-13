@@ -6,8 +6,5 @@
         android:icon="@drawable/iconotrespuntos"
         android:title="Añadir"
         app:showAsAction="always" />
-    <item
-        android:id="@+id/ver_estadisticas"
-        android:title="Ver estadísticas" />
 
 </menu>
