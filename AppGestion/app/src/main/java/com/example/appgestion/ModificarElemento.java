@@ -53,7 +53,6 @@ public class ModificarElemento extends AppCompatActivity {
 
         // Configurar evento para el botón "Aceptar"
         botonAceptar.setOnClickListener(v -> {
-            // Obtener datos modificados
             String estiloSeleccionado = estiloPrenda.getSelectedItem().toString();
             String tallaSeleccionada = getSelectedTalla();
 
@@ -66,16 +65,13 @@ public class ModificarElemento extends AppCompatActivity {
 
             // Pasar datos de vuelta
             Intent resultIntent = new Intent();
+            resultIntent.putExtra("nombre", getIntent().getStringExtra("nombre")); // Conservar el nombre
             resultIntent.putExtra("estilo", estiloSeleccionado);
             resultIntent.putExtra("talla", tallaSeleccionada);
             resultIntent.putExtra("position", position);
+            resultIntent.putExtra("imagen", getIntent().getIntExtra("imagen", R.drawable.imagen_defecto));
+            resultIntent.putExtra("precio", getIntent().getDoubleExtra("precio", 0.0));
             setResult(RESULT_OK, resultIntent);
-            finish();
-        });
-
-        // Configurar evento para el botón "Cancelar"
-        botonCancelar.setOnClickListener(v -> {
-            setResult(RESULT_CANCELED);
             finish();
         });
     }

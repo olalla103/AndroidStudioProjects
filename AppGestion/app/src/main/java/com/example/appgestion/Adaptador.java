@@ -58,9 +58,10 @@ public class Adaptador extends BaseAdapter {
         }
 
         PrendaRopa prenda = datos.get(position);
-        holder.titulo.setText(prenda.getNombre()); // Mostrar el nombre
+        holder.titulo.setText(prenda.getNombre());
         holder.imagen.setImageResource(prenda.getImagen());
 
+        // Configurar el botón del menú
         holder.botonMenu.setOnClickListener(v -> {
             PopupMenu popupMenu = new PopupMenu(context, holder.botonMenu);
             popupMenu.inflate(R.menu.menu_item);
@@ -71,19 +72,27 @@ public class Adaptador extends BaseAdapter {
                     return true;
                 } else if (item.getItemId() == R.id.opcion_editar) {
                     Intent intent = new Intent(context, ModificarElemento.class);
-                    intent.putExtra("nombre", prenda.getNombre()); // Pasar el nombre
-                    intent.putExtra("descripcion", prenda.getDescripcion());
+                    intent.putExtra("nombre", prenda.getNombre());
                     intent.putExtra("estilo", prenda.getEstilo().name());
                     intent.putExtra("talla", prenda.getTalla());
+                    intent.putExtra("precio", prenda.getPrecio());
+                    intent.putExtra("imagen", prenda.getImagen());
                     intent.putExtra("position", position);
-                    context.startActivityForResult(intent, 2);
+
+                    // Verificar compatibilidad de startActivityForResult
+                    if (context instanceof Activity) {
+                        ((Activity) context).startActivityForResult(intent, 2);
+                    } else {
+                        throw new IllegalStateException("Contexto no es una Actividad");
+                    }
                     return true;
+
                 } else if (item.getItemId() == R.id.opcion_eliminar) {
-                    datos.remove(position);
-                    notifyDataSetChanged();
+                    eliminarElemento(position);
                     return true;
+                } else {
+                    return false;
                 }
-                return false;
             });
             popupMenu.show();
         });
@@ -91,13 +100,19 @@ public class Adaptador extends BaseAdapter {
         return convertView;
     }
 
+    private void eliminarElemento(int position) {
+        datos.remove(position);
+        notifyDataSetChanged(); // Opcionalmente, animar la eliminación
+    }
 
     private void mostrarDescripcion(PrendaRopa prenda) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("Descripción de la Prenda");
-        builder.setMessage(prenda.getDescripcion());
-        builder.setPositiveButton("Cerrar", (dialog, which) -> dialog.dismiss());
-        builder.create().show();
+        builder.setTitle("Descripción de " + prenda.getNombre())
+                .setMessage("Estilo: " + prenda.getEstilo() + "\n"
+                        + "Talla: " + prenda.getTalla() + "\n"
+                        + "Precio: $" + prenda.getPrecio())
+                .setPositiveButton("Cerrar", null)
+                .show();
     }
 
     static class ViewHolder {

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -69,43 +70,49 @@ public class ListaElementos extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
-            // Agregar un nuevo elemento
-            String nombre = data.getStringExtra("nombre");
-            String talla = data.getStringExtra("talla");
-            String estiloString = data.getStringExtra("estilo");
-            double precio = data.getDoubleExtra("precio", 0.0);
-            int imagen = data.getIntExtra("imagen", R.drawable.imagen_defecto);
+            try {
+                // Recuperar los datos enviados desde AniadirElemento
+                String nombre = data.getStringExtra("nombre");
+                String estiloString = data.getStringExtra("estilo");
+                String talla = data.getStringExtra("talla");
+                double precio = data.getDoubleExtra("precio", 0.0);
+                int imagen = data.getIntExtra("imagen", R.drawable.imagen_defecto);
 
-            if (nombre != null && talla != null && estiloString != null) {
+                // Validar que no haya valores nulos
+                if (nombre == null || estiloString == null || talla == null) {
+                    Toast.makeText(this, "Datos incompletos recibidos", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Crear y añadir el nuevo objeto
                 Estilos estilo = Estilos.valueOf(estiloString);
                 PrendaRopa nuevaPrenda = new PrendaRopa(nombre, talla, estilo, precio, imagen);
                 datos.add(nuevaPrenda);
-                adaptador.notifyDataSetChanged();
-            }
-        }
 
-        if (requestCode == 2 && resultCode == RESULT_OK && data != null) {
-            // Editar un elemento existente
-            int position = data.getIntExtra("position", -1);
-            String nombre = data.getStringExtra("nombre");
-            String talla = data.getStringExtra("talla");
-            String estiloString = data.getStringExtra("estilo");
-            double precio = data.getDoubleExtra("precio", 0.0);
-            int imagen = data.getIntExtra("imagen", R.drawable.imagen_defecto);
-
-            if (position >= 0 && nombre != null && talla != null && estiloString != null) {
-                Estilos estilo = Estilos.valueOf(estiloString);
-                PrendaRopa prenda = datos.get(position);
-                prenda.setNombre(nombre);
-                prenda.setTalla(talla);
-                prenda.setEstilo(estilo);
-                prenda.setPrecio(precio);
-                prenda.setImagen(imagen);
+                // Notificar al adaptador
                 adaptador.notifyDataSetChanged();
+                Toast.makeText(this, "Prenda añadida: " + nombre, Toast.LENGTH_SHORT).show();
+            } catch (Exception e) {
+                Toast.makeText(this, "Error al añadir la prenda", Toast.LENGTH_SHORT).show();
+                e.printStackTrace();
             }
         }
     }
 
+
+    private void actualizarPrenda(int position, String nombre, String estilo, String talla, double precio, int imagen) {
+        if (position >= 0 && nombre != null && estilo != null && talla != null) {
+            PrendaRopa prenda = datos.get(position);
+            prenda.setNombre(nombre);
+            prenda.setEstilo(Estilos.valueOf(estilo));
+            prenda.setTalla(talla);
+            prenda.setPrecio(precio);
+            prenda.setImagen(imagen);
+            adaptador.notifyDataSetChanged();
+        } else {
+            Toast.makeText(this, "Error al actualizar el producto", Toast.LENGTH_SHORT).show();
+        }
+    }
 
 
 }
