@@ -1,44 +1,50 @@
 package com.example.appgestion;
 
 public class PrendaRopa {
-    private String tipo;
+    private String nombre;
     private String talla;
-    private String color;
+    private Estilos estilo; // Cambiado a enum Estilos
     private double precio;
+    private int imagen; // ID de la imagen (en drawable)
+    private String descripcion;
 
     public PrendaRopa() {
     }
 
-    public PrendaRopa(String tipo, String talla, String color, double precio) {
-        this.tipo = tipo;
+    public PrendaRopa(String nombre, String talla, Estilos estilo, double precio, int imagen) {
+        this.nombre = nombre;
         this.talla = talla;
-        this.color = color;
+        this.estilo = estilo;
         this.precio = precio;
+        this.imagen = imagen;
     }
 
-
-    public String getTipo() {
-        return tipo;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getTalla() {
         return talla;
     }
 
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     public void setTalla(String talla) {
         this.talla = talla;
     }
 
-    public String getColor() {
-        return color;
+    public Estilos getEstilo() {
+        return estilo;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setEstilo(Estilos estilo) {
+        this.estilo = estilo;
     }
 
     public double getPrecio() {
@@ -49,14 +55,18 @@ public class PrendaRopa {
         this.precio = precio;
     }
 
-    @Override
-    public String toString() {
-        return "PrendaRopa{" +
-                "tipo='" + tipo + '\'' +
-                ", talla='" + talla + '\'' +
-                ", color='" + color + '\'' +
-                ", precio=" + precio +
-                '}';
+    public int getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(int imagen) {
+        this.imagen = imagen;
+    }
+
+    public String getDescripcion() {
+        return "Nombre: " + this.getNombre()
+                + "\nTalla: " + this.getTalla()
+                + "\nEstilo: " + this.getEstilo()
+                + "\nPrecio: " + this.getPrecio();
     }
 }
-

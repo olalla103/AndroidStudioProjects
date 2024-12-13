@@ -4,84 +4,98 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class ModificarElemento extends AppCompatActivity {
 
-    private EditText editTextDescripcion;
-    private Spinner spinnerEstilo;
-    private Button btnAceptar, btnCancelar;
+    private Spinner estiloPrenda;
+    private RadioGroup radioGroupTallas;
+    private Button botonAceptar, botonCancelar;
 
     private int position;
-    private String titulo, descripcion, estilo;
-    private boolean favorito;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modificar_elemento);
 
-        // Inicializamos los elementos de la UI
-        editTextDescripcion = findViewById(R.id.editTextTextMultiLine);
-        spinnerEstilo = findViewById(R.id.spinnerEstilo);
-        btnAceptar = findViewById(R.id.button3);
-        btnCancelar = findViewById(R.id.button4);
+        // Inicializar componentes
+        estiloPrenda = findViewById(R.id.spinner);
+        radioGroupTallas = findViewById(R.id.radioGroupTallas);
+        botonAceptar = findViewById(R.id.aceptar);
+        botonCancelar = findViewById(R.id.cancelar);
 
-        // Recuperamos los datos del Intent
-        Intent intent = getIntent();
-        descripcion = intent.getStringExtra("descripcion");
-        estilo = intent.getStringExtra("estilo");
-        position = intent.getIntExtra("position", -1);
-
-        // Mostramos la descripción en el EditText
-        if (descripcion != null) {
-            editTextDescripcion.setText(descripcion);
-        }
-
-        // Configuramos el Spinner con los estilos
+        // Configurar el Spinner con los estilos disponibles
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.estilos_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerEstilo.setAdapter(adapter);
+        estiloPrenda.setAdapter(adapter);
 
-        // Establecemos el estilo actual en el Spinner, si es válido
-        if (estilo != null) {
-            int spinnerPosition = adapter.getPosition(estilo);
-            if (spinnerPosition >= 0) {
-                spinnerEstilo.setSelection(spinnerPosition);
-            } else {
-                // Si el estilo no se encuentra en la lista, establecer la selección en 0 (por ejemplo, "Selecciona un estilo")
-                spinnerEstilo.setSelection(0);
+        // Recuperar datos del Intent
+        Intent intent = getIntent();
+        if (intent != null) {
+            String estilo = intent.getStringExtra("estilo");
+            if (estilo != null) {
+                int spinnerPosition = adapter.getPosition(estilo);
+                estiloPrenda.setSelection(spinnerPosition);
             }
+
+            String talla = intent.getStringExtra("talla");
+            if (talla != null) {
+                selectRadioButtonForTalla(talla);
+            }
+
+            position = intent.getIntExtra("position", -1);
         }
 
-        // Acción del botón Aceptar cambios
-        btnAceptar.setOnClickListener(v -> guardarCambios());
+        // Configurar evento para el botón "Aceptar"
+        botonAceptar.setOnClickListener(v -> {
+            // Obtener datos modificados
+            String estiloSeleccionado = estiloPrenda.getSelectedItem().toString();
+            String tallaSeleccionada = getSelectedTalla();
 
-        // Acción del botón Cancelar
-        btnCancelar.setOnClickListener(v -> finish()); // Cierra la actividad sin guardar cambios
+            // Validar que los datos no estén vacíos
+            if (estiloSeleccionado.isEmpty() || tallaSeleccionada.isEmpty()) {
+                setResult(RESULT_CANCELED);
+                finish();
+                return;
+            }
+
+            // Pasar datos de vuelta
+            Intent resultIntent = new Intent();
+            resultIntent.putExtra("estilo", estiloSeleccionado);
+            resultIntent.putExtra("talla", tallaSeleccionada);
+            resultIntent.putExtra("position", position);
+            setResult(RESULT_OK, resultIntent);
+            finish();
+        });
+
+        // Configurar evento para el botón "Cancelar"
+        botonCancelar.setOnClickListener(v -> {
+            setResult(RESULT_CANCELED);
+            finish();
+        });
     }
 
+    private String getSelectedTalla() {
+        int selectedId = radioGroupTallas.getCheckedRadioButtonId();
+        if (selectedId != -1) {
+            RadioButton selectedRadioButton = findViewById(selectedId);
+            return selectedRadioButton.getText().toString();
+        }
+        return ""; // Si no hay selección
+    }
 
-    private void guardarCambios() {
-        // Obtener los valores modificados
-        String nuevaDescripcion = editTextDescripcion.getText().toString();
-        String nuevoEstilo = spinnerEstilo.getSelectedItem().toString();
-
-        // Crear el Intent con los nuevos datos
-        Intent resultIntent = new Intent();
-        resultIntent.putExtra("descripcion", nuevaDescripcion);
-        resultIntent.putExtra("estilo", nuevoEstilo);
-        resultIntent.putExtra("position", position); // Enviar la posición para identificar el item modificado
-
-        // Establecer el resultado y cerrar la actividad
-        setResult(RESULT_OK, resultIntent);
-        finish(); // Regresa a la actividad anterior
+    private void selectRadioButtonForTalla(String talla) {
+        for (int i = 0; i < radioGroupTallas.getChildCount(); i++) {
+            RadioButton radioButton = (RadioButton) radioGroupTallas.getChildAt(i);
+            if (radioButton.getText().toString().equalsIgnoreCase(talla)) {
+                radioButton.setChecked(true);
+                break;
+            }
+        }
     }
 }

@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/aniadir"
-        android:title="Añadir" />
+        android:icon="@drawable/iconotrespuntos"
+        android:title="Añadir"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/ver_estadisticas"
+        android:title="Ver estadísticas" />
+
 </menu>
