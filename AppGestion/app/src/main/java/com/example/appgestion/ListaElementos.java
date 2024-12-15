@@ -96,6 +96,18 @@ public class ListaElementos extends AppCompatActivity {
                 Toast.makeText(this, "Error al añadir la prenda", Toast.LENGTH_SHORT).show();
                 e.printStackTrace();
             }
+            // modificación para editar supuestamente
+        } else if (requestCode == 2 && resultCode == RESULT_OK && data != null) {
+            int position = data.getIntExtra("position", -1);
+            String estilo = data.getStringExtra("estilo");
+            String talla = data.getStringExtra("talla");
+
+            if (position >= 0 && estilo != null && talla != null) {
+                PrendaRopa prenda = datos.get(position);
+                prenda.setEstilo(Estilos.valueOf(estilo));
+                prenda.setTalla(talla);
+                adaptador.notifyDataSetChanged();
+            }
         }
     }
 

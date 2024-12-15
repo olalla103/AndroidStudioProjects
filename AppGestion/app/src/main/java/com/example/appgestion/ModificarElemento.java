@@ -15,7 +15,6 @@ public class ModificarElemento extends AppCompatActivity {
     private Spinner estiloPrenda;
     private RadioGroup radioGroupTallas;
     private Button botonAceptar, botonCancelar;
-
     private int position;
 
     @Override
@@ -23,20 +22,22 @@ public class ModificarElemento extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modificar_elemento);
 
-        // Inicializar componentes
+        // Inicialización
         estiloPrenda = findViewById(R.id.spinner);
         radioGroupTallas = findViewById(R.id.radioGroupTallas);
         botonAceptar = findViewById(R.id.aceptar);
         botonCancelar = findViewById(R.id.cancelar);
 
-        // Configurar el Spinner con los estilos disponibles
+        // Configurar Spinner
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.estilos_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         estiloPrenda.setAdapter(adapter);
 
-        // Recuperar datos del Intent
+        // Recuperar datos del intent
         Intent intent = getIntent();
         if (intent != null) {
+            position = intent.getIntExtra("position", -1);
+
             String estilo = intent.getStringExtra("estilo");
             if (estilo != null) {
                 int spinnerPosition = adapter.getPosition(estilo);
@@ -47,31 +48,30 @@ public class ModificarElemento extends AppCompatActivity {
             if (talla != null) {
                 selectRadioButtonForTalla(talla);
             }
-
-            position = intent.getIntExtra("position", -1);
         }
 
-        // Configurar evento para el botón "Aceptar"
+        // Configurar botón aceptar
         botonAceptar.setOnClickListener(v -> {
             String estiloSeleccionado = estiloPrenda.getSelectedItem().toString();
             String tallaSeleccionada = getSelectedTalla();
 
-            // Validar que los datos no estén vacíos
             if (estiloSeleccionado.isEmpty() || tallaSeleccionada.isEmpty()) {
                 setResult(RESULT_CANCELED);
                 finish();
                 return;
             }
 
-            // Pasar datos de vuelta
+            // Enviar datos de vuelta
             Intent resultIntent = new Intent();
-            resultIntent.putExtra("nombre", getIntent().getStringExtra("nombre")); // Conservar el nombre
             resultIntent.putExtra("estilo", estiloSeleccionado);
             resultIntent.putExtra("talla", tallaSeleccionada);
             resultIntent.putExtra("position", position);
-            resultIntent.putExtra("imagen", getIntent().getIntExtra("imagen", R.drawable.imagen_defecto));
-            resultIntent.putExtra("precio", getIntent().getDoubleExtra("precio", 0.0));
             setResult(RESULT_OK, resultIntent);
+            finish();
+        });
+
+        botonCancelar.setOnClickListener(v -> {
+            setResult(RESULT_CANCELED);
             finish();
         });
     }
@@ -82,7 +82,7 @@ public class ModificarElemento extends AppCompatActivity {
             RadioButton selectedRadioButton = findViewById(selectedId);
             return selectedRadioButton.getText().toString();
         }
-        return ""; // Si no hay selección
+        return "";
     }
 
     private void selectRadioButtonForTalla(String talla) {

@@ -1,15 +1,19 @@
 package com.example.appgestion;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class AniadirElemento extends AppCompatActivity {
@@ -18,6 +22,9 @@ public class AniadirElemento extends AppCompatActivity {
     private Spinner estiloPrenda;
     private RadioGroup radioGroupTallas;
     private Button botonAceptar, botonCancelar;
+    private static final int SELECCIONAR_IMAGEN = 1001;
+    private String prendaImagenUri; // Almacena temporalmente la URI de la imagen seleccionada
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +39,18 @@ public class AniadirElemento extends AppCompatActivity {
         botonAceptar = findViewById(R.id.aceptar);
         botonCancelar = findViewById(R.id.cancelar);
 
+        Button botonAñadirImagen = findViewById(R.id.botonAñadirImagen);
+        botonAñadirImagen.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            startActivityForResult(intent, SELECCIONAR_IMAGEN); // Llama a onActivityResult con el código SELECCIONAR_IMAGEN
+        });
+
         // Configurar opciones del Spinner de estilos
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this, R.array.estilos_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         estiloPrenda.setAdapter(adapter);
+
 
         // Configurar botón "Aceptar"
         botonAceptar.setOnClickListener(v -> {
@@ -68,14 +82,15 @@ public class AniadirElemento extends AppCompatActivity {
                 resultIntent.putExtra("precio", precio);
                 resultIntent.putExtra("estilo", estilo);
                 resultIntent.putExtra("talla", talla);
-                resultIntent.putExtra("imagen", R.drawable.imagen_defecto);
-
+                resultIntent.putExtra("imagenUri", prendaImagenUri);
                 setResult(RESULT_OK, resultIntent);
                 finish();
             } catch (Exception e) {
                 Toast.makeText(this, "Error al procesar los datos", Toast.LENGTH_SHORT).show();
                 e.printStackTrace();
             }
+
+
         });
 
 
@@ -93,5 +108,18 @@ public class AniadirElemento extends AppCompatActivity {
             return selectedRadioButton.getText().toString();
         }
         return ""; // Si no se selecciona nada
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == SELECCIONAR_IMAGEN && resultCode == RESULT_OK && data != null) {
+            Uri imagenSeleccionada = data.getData();
+            if (imagenSeleccionada != null) {
+                // Guarda la URI de la imagen para asociarla con la prenda
+                prendaImagenUri = imagenSeleccionada.toString();
+            }
+        }
     }
 }

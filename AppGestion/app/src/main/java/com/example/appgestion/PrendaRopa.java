@@ -7,6 +7,7 @@ public class PrendaRopa {
     private double precio;
     private int imagen; // ID de la imagen (en drawable)
     private String descripcion;
+    private String imagenUri; // URI de la imagen
 
     public PrendaRopa() {
     }
@@ -61,6 +62,14 @@ public class PrendaRopa {
 
     public void setImagen(int imagen) {
         this.imagen = imagen;
+    }
+
+    public String getImagenUri() {
+        return imagenUri;
+    }
+
+    public void setImagenUri(String imagenUri) {
+        this.imagenUri = imagenUri;
     }
 
     public String getDescripcion() {

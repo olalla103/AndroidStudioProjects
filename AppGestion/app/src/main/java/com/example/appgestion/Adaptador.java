@@ -4,6 +4,7 @@ package com.example.appgestion;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,8 +59,14 @@ public class Adaptador extends BaseAdapter {
         }
 
         PrendaRopa prenda = datos.get(position);
+        // Configurar título de la prenda
         holder.titulo.setText(prenda.getNombre());
-        holder.imagen.setImageResource(prenda.getImagen());
+        // Configurar la imagen
+        if (prenda.getImagenUri() != null) {
+            holder.imagen.setImageURI(Uri.parse(prenda.getImagenUri())); // Si tiene URI personalizada
+        } else {
+            holder.imagen.setImageResource(prenda.getImagen()); // Imagen predeterminada
+        }
 
         // Configurar el botón del menú
         holder.botonMenu.setOnClickListener(v -> {
@@ -72,21 +79,11 @@ public class Adaptador extends BaseAdapter {
                     return true;
                 } else if (item.getItemId() == R.id.opcion_editar) {
                     Intent intent = new Intent(context, ModificarElemento.class);
-                    intent.putExtra("nombre", prenda.getNombre());
+                    intent.putExtra("position", position);
                     intent.putExtra("estilo", prenda.getEstilo().name());
                     intent.putExtra("talla", prenda.getTalla());
-                    intent.putExtra("precio", prenda.getPrecio());
-                    intent.putExtra("imagen", prenda.getImagen());
-                    intent.putExtra("position", position);
-
-                    // Verificar compatibilidad de startActivityForResult
-                    if (context instanceof Activity) {
-                        ((Activity) context).startActivityForResult(intent, 2);
-                    } else {
-                        throw new IllegalStateException("Contexto no es una Actividad");
-                    }
+                    ((ListaElementos) context).startActivityForResult(intent, 2);
                     return true;
-
                 } else if (item.getItemId() == R.id.opcion_eliminar) {
                     eliminarElemento(position);
                     return true;
