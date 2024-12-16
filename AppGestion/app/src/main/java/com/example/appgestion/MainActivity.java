@@ -1,23 +1,18 @@
 package com.example.appgestion;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,8 +25,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Añade usuarios y contraseñas
-        // Habrá que hacer un método para añadir usuarios y contraseñas
+        // Añadir usuarios y contraseñas válidos
         validUsers.put("olallalnc", "Towel4");
         validUsers.put("inigolnc", "inigoFeo234");
         validUsers.put("bertabl", "huerta177");
@@ -42,34 +36,22 @@ public class MainActivity extends AppCompatActivity {
         EditText passwordField = findViewById(R.id.contrasenia);
         Button loginButton = findViewById(R.id.entrarButton);
 
-        // Pulsar el botón de validación
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String username = usernameField.getText().toString();
-                String password = passwordField.getText().toString();
+        // Configurar el botón de inicio de sesión
+        loginButton.setOnClickListener(v -> {
+            String username = usernameField.getText().toString();
+            String password = passwordField.getText().toString();
 
-                if (isValidUser(username, password)) {
-                    // Crear un Toast personalizado con imagen y fondo de color
-                    Toast toast = Toast.makeText(MainActivity.this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT);
+            if (isValidUser(username, password)) {
+                // Mostrar el Toast personalizado
+                showCustomToast("Inicio de sesión exitoso");
 
-                    // Crear un diseño personalizado para el Toast
-                    LinearLayout layout = new LinearLayout(MainActivity.this);  // Usa MainActivity.this para obtener el contexto
-                    layout.setOrientation(LinearLayout.HORIZONTAL);
-                    layout.setPadding(10, 10, 10, 10);
-
-                    Toast.makeText(MainActivity.this, "Sesión iniciada con éxito", Toast.LENGTH_SHORT).show();
-
-                    // Vamos a la actividad de la lista de la ropa
-                    Intent intent = new Intent(MainActivity.this, ListaElementos.class);
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(MainActivity.this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
-                }
+                // Ir a la actividad de lista de elementos
+                Intent intent = new Intent(MainActivity.this, ListaElementos.class);
+                startActivity(intent);
+            } else {
+                Toast.makeText(MainActivity.this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
             }
         });
-
-
     }
 
     // Validación de usuarios
@@ -77,4 +59,24 @@ public class MainActivity extends AppCompatActivity {
         return validUsers.containsKey(username) && validUsers.get(username).equals(password);
     }
 
+    // Método para mostrar el Toast personalizado
+    private void showCustomToast(String message) {
+        // Inflar el diseño personalizado del Toast
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.custom_toast, findViewById(R.id.custom_toast_root));
+
+        // Configurar el texto del Toast
+        TextView toastText = layout.findViewById(R.id.toast_text);
+        toastText.setText(message);
+
+        // Configurar el icono si es necesario (opcional)
+        ImageView toastIcon = layout.findViewById(R.id.toast_icon);
+        toastIcon.setImageResource(R.drawable.icono); // Cambia por el recurso de tu icono
+
+        // Crear y mostrar el Toast
+        Toast toast = new Toast(getApplicationContext());
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(layout);
+        toast.show();
+    }
 }

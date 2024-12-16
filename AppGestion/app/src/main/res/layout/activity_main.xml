@@ -40,7 +40,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/contrasenia"
-        app:layout_constraintVertical_bias="0.565" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/usuario"
@@ -65,13 +65,13 @@
         android:layout_marginEnd="164dp"
         android:layout_marginBottom="18dp"
         android:text="Introduzca su contraseña"
-        android:textSize="16sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/contrasenia"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/usuario"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.333" />
 
     <TextView
         android:id="@+id/textViewUsuario"
@@ -81,10 +81,22 @@
         android:layout_marginTop="252dp"
         android:layout_marginEnd="189dp"
         android:text="Introduzca su usuario"
-        android:textSize="16sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/usuario"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="190dp"
+        android:layout_height="175dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="121dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/icono" />
 </androidx.constraintlayout.widget.ConstraintLayout>

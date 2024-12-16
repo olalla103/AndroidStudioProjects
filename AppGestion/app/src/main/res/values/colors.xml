@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Colores personalizados -->
-    <color name="colorPrimary">#F48FB1</color> <!-- Rosa Claro -->
-    <color name="colorPrimaryDark">#F06292</color> <!-- Rosa más oscuro -->
-    <color name="colorAccent">#F50057</color> <!-- Rosa fuerte -->
-    <color name="textColorPrimary">#000000</color> <!-- Texto negro para buen contraste -->
-    <color name="textColorSecondary">#FFFFFF</color> <!-- Texto blanco -->
-    <color name="backgroundColor">#FCE4EC</color> <!-- Rosa muy suave para el fondo -->
-    <color name="buttonColor">#EC407A</color> <!-- Rosa brillante para botones -->
-
-    <!-- Colores de Material Design, si los necesitas -->
-    <color name="purple_500">#9C27B0</color>
-    <color name="purple_700">#7B1FA2</color>
-    <color name="teal_200">#80CBC4</color>
+    <color name="colorPrimary">#E91E63</color> <!-- Rosa principal -->
+    <color name="colorPrimaryDark">#C2185B</color> <!-- Rosa oscuro -->
+    <color name="colorAccent">#F8BBD0</color> <!-- Rosa claro -->
+    <color name="colorBackground">#FFFFFF</color> <!-- Blanco puro -->
+    <color name="colorSurface">#FCE4EC</color> <!-- Rosa suave -->
+    <color name="colorActivityBackground">#FCE4EC</color> <!-- Fondo específico -->
+    <color name="colorToolbarBackground">#F8BBD0</color> <!-- Rosa claro para toolbar -->
+    <color name="colorTextPrimary">#212121</color> <!-- Negro suave -->
+    <color name="colorTextSecondary">#757575</color> <!-- Gris claro -->
+    <color name="colorButtonText">#FFFFFF</color> <!-- Blanco para botones -->
+    <color name="purple_500">#9C27B0</color> <!-- Un morado -->
+    <color name="purple_700">#7B1FA2</color> <!-- Un morado oscuro -->
+    <color name="teal_200">#80CBC4</color>  <!-- Un verde azulado -->
+    <color name="colorLightGray">#E0E0E0</color> <!-- Un gris claro -->
 </resources>
+
+

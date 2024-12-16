@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -117,8 +118,8 @@ public class AniadirElemento extends AppCompatActivity {
         if (requestCode == SELECCIONAR_IMAGEN && resultCode == RESULT_OK && data != null) {
             Uri imagenSeleccionada = data.getData();
             if (imagenSeleccionada != null) {
-                // Guarda la URI de la imagen para asociarla con la prenda
-                prendaImagenUri = imagenSeleccionada.toString();
+                prendaImagenUri = imagenSeleccionada.toString(); // Guardar la URI como String
+                Log.d("DEBUG", "URI de la imagen seleccionada: " + prendaImagenUri);
             }
         }
     }

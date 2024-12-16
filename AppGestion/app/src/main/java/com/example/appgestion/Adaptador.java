@@ -22,6 +22,7 @@ public class Adaptador extends BaseAdapter {
     private int layout;
     private ArrayList<PrendaRopa> datos;
 
+
     public Adaptador(Activity context, int layout, ArrayList<PrendaRopa> datos) {
         this.context = context;
         this.layout = layout;
@@ -111,6 +112,13 @@ public class Adaptador extends BaseAdapter {
                 .setPositiveButton("Cerrar", null)
                 .show();
     }
+
+    public void actualizarDatos(ArrayList<PrendaRopa> nuevasPrendas) {
+        datos.clear();
+        datos.addAll(nuevasPrendas);
+        notifyDataSetChanged();
+    }
+
 
     static class ViewHolder {
         ImageView imagen;

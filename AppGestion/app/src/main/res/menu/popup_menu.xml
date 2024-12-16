@@ -3,8 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/aniadir"
-        android:icon="@drawable/iconotrespuntos"
+        android:icon="@drawable/anadir"
         android:title="Añadir"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_search"
+        android:title="Buscar"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="always" />
 
 </menu>

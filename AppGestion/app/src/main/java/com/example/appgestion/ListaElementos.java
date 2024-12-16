@@ -2,21 +2,27 @@ package com.example.appgestion;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
+
+import androidx.appcompat.widget.SearchView; // Importar esto
+
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ListaElementos extends AppCompatActivity {
 
     private ListView lista;
     private Adaptador adaptador;
     private ArrayList<PrendaRopa> datos = new ArrayList<>();
+    private List<PrendaRopa> datosOriginales; // Guarda la lista completa sin filtros
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +31,9 @@ public class ListaElementos extends AppCompatActivity {
 
         // Configuración de la Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
+        // Inicializa las listas
+        datos = new ArrayList<>();
+        datosOriginales = new ArrayList<>();
         setSupportActionBar(toolbar);
 
         lista = findViewById(R.id.lista);
@@ -38,16 +47,56 @@ public class ListaElementos extends AppCompatActivity {
         datos.add(new PrendaRopa("Chaqueta acolchada", "XL", Estilos.Masculino, 59.99, R.drawable.chaquetaacolchada_hombre));
         datos.add(new PrendaRopa("Chaqueta cuero", "L", Estilos.Neutro, 99.99, R.drawable.chaquetacuero_hombre));
 
+        // Copiar datos originales
+        datosOriginales.addAll(datos);
 
         adaptador = new Adaptador(this, R.layout.entrada, datos);
         lista.setAdapter(adaptador);
+
     }
+
+    private void configurarSearchView(androidx.appcompat.widget.SearchView searchView) {
+        searchView.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // Acción al enviar la búsqueda
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                // Filtra los elementos conforme se escribe
+                if (newText.isEmpty()) {
+                    datos.clear();
+                    datos.addAll(datosOriginales); // Restaura la lista original
+                    adaptador.notifyDataSetChanged();
+                } else {
+                    filtrarPrendas(newText);
+                }
+                return true;
+            }
+        });
+    }
+
 
     // Inflar el menú de la Toolbar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.popup_menu, menu);
-        return true;
+        // Obtiene el SearchView desde el item del menú
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        // Obtén la vista SearchView asociada al item del menú
+        androidx.appcompat.widget.SearchView searchView =
+                (androidx.appcompat.widget.SearchView) searchItem.getActionView();
+
+        // Llama al método y le pasa el SearchView obtenido
+        if (searchView != null) {
+            configurarSearchView(searchView); // Llamada al método configurando el SearchView
+        } else {
+            Log.e("ListaElementos", "SearchView es nulo"); // Debug si falla
+        }
+
+        return true; // Devuelve true para mostrar el menú
     }
 
     // Manejar las opciones seleccionadas del menú
@@ -109,6 +158,16 @@ public class ListaElementos extends AppCompatActivity {
                 adaptador.notifyDataSetChanged();
             }
         }
+    }
+
+    private void filtrarPrendas(String texto) {
+        datos.clear();
+        for (PrendaRopa prenda : datosOriginales) {
+            if (prenda.getNombre().toLowerCase().contains(texto.toLowerCase())) {
+                datos.add(prenda);
+            }
+        }
+        adaptador.notifyDataSetChanged();
     }
 
 

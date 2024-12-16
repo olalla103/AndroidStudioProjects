@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AppGestion</string>
+    <string name="app_name">Gestión Almacén</string>
     <string name="menu_opciones">Opciones</string>
     <string-array name="estilos_array">
         <item>Femenino</item>

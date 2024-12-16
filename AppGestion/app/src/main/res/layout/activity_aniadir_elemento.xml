@@ -120,6 +120,7 @@
 
     <Button
         android:id="@+id/aceptar"
+        style="@style/MinimalButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
@@ -144,6 +145,7 @@
 
     <Button
         android:id="@+id/botonAñadirImagen"
+        style="@style/MinimalButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="127dp"
