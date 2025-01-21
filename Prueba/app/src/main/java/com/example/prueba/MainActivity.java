@@ -7,12 +7,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-
 public class MainActivity extends AppCompatActivity implements Fragmento1.OnFragmentInteractionListener {
 
     private Fragmento2 fragmento2;
-    FragmentManager FM = getSupportFragmentManager();
-    FragmentTransaction FT = FM.beginTransaction();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,15 +17,19 @@ public class MainActivity extends AppCompatActivity implements Fragmento1.OnFrag
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
+        // Agrega los fragmentos a la actividad
+        FragmentManager FManager = getSupportFragmentManager();
+        FragmentTransaction FTransaction = FManager.beginTransaction();
+
         Fragmento1 fragmento1 = new Fragmento1();
         fragmento2 = new Fragmento2();
-        FT.add(R.id.contenedor1, fragmento1);
-        FT.add(R.id.contenedor2, fragmento2);
-        FT.commit();
-
+        FTransaction.add(R.id.caja1, fragmento1);
+        FTransaction.add(R.id.caja2, fragmento2);
+        FTransaction.commit();
     }
 
+    // Recibe el texto de Fragmento1 y lo envía a Fragmento2
     public void enviarTexto(String texto) {
-        fragmento2.actualizarTexto(texto);
+        fragmento2.nuevoTexto(texto);
     }
 }

@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Prueba"
+rootProject.name = "OlallaPruebaTema9"
 include(":app")
  

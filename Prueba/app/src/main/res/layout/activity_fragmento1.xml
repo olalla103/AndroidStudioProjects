@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="20dp"
-        android:hint="Escribe algo"
+        android:hint="Introduzca un texto"
         android:paddingTop="50dp" />
 
     <Button
