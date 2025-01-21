@@ -2,20 +2,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/contenedor"
+    android:id="@+id/caja"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
     <FrameLayout
-        android:id="@+id/contenedor1"
+        android:id="@+id/caja1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
 
     <FrameLayout
-        android:id="@+id/contenedor2"
+        android:id="@+id/caja2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />

@@ -12,19 +12,7 @@ import androidx.fragment.app.Fragment;
 
 public class Fragmento1 extends Fragment {
 
-    public interface OnFragmentInteractionListener {
-        void enviarTexto(String texto);
-    }
-
     private OnFragmentInteractionListener listener;
-
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        listener = (OnFragmentInteractionListener) context;
-
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -33,16 +21,23 @@ public class Fragmento1 extends Fragment {
         Button boton = view.findViewById(R.id.boton);
         EditText editText = view.findViewById(R.id.editText);
 
-        boton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String texto = editText.getText().toString();
-                listener.enviarTexto(texto);
-
-            }
+        // Envía el texto al listener al hacer clic en el botón
+        boton.setOnClickListener(v -> {
+            String texto = editText.getText().toString();
+            listener.enviarTexto(texto);
         });
 
         return view;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        listener = (OnFragmentInteractionListener) context;
+    }
+
+    public interface OnFragmentInteractionListener {
+        void enviarTexto(String texto);
     }
 
     @Override

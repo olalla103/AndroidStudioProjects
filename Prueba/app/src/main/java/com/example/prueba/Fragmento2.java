@@ -15,14 +15,14 @@ public class Fragmento2 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_fragmento2, container, false);
-
         texto = view.findViewById(R.id.texto);
         return view;
     }
 
-    public void actualizarTexto(String t) {
-        if (t != null) {
-            texto.setText(t);
+    // Actualiza el contenido del TextView
+    public void nuevoTexto(String frase) {
+        if (frase != null) {
+            texto.setText(frase);
         }
     }
 }
