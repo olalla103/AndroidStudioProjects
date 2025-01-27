@@ -1,6 +1,8 @@
 package com.example.hito7;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,5 +40,11 @@ public class InfoUsuario extends AppCompatActivity {
             Toast.makeText(this, "Error al leer el archivo de información", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
+
+        Button volver = findViewById(R.id.botonVolver);
+        volver.setOnClickListener(v -> {
+            Intent intent = new Intent(InfoUsuario.this, MainActivity.class);
+            startActivity(intent);
+        });
     }
 }
