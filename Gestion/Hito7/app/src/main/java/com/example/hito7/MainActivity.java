@@ -1,13 +1,14 @@
 package com.example.hito7;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
 
     // Mapa con usuarios y contraseñas válidos
     private final HashMap<String, String> validUsers = new HashMap<>();
+    private static final String PREFERENCES_NAME = "UserPreferences"; // Nombre de SharedPreferences
+    private static final String KEY_LAST_USER = "lastUser"; // Clave para guardar el último usuario
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +39,26 @@ public class MainActivity extends AppCompatActivity {
         EditText passwordField = findViewById(R.id.contrasenia);
         Button loginButton = findViewById(R.id.entrarButton);
 
+        // Recuperar SharedPreferences
+        SharedPreferences preferences = getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE);
+
+        // Rellenar automáticamente el último usuario si existe
+        String lastUser = preferences.getString(KEY_LAST_USER, "");
+        if (!lastUser.isEmpty()) {
+            usernameField.setText(lastUser);
+        }
+
         // Configurar el botón de inicio de sesión
         loginButton.setOnClickListener(v -> {
             String username = usernameField.getText().toString();
             String password = passwordField.getText().toString();
 
             if (isValidUser(username, password)) {
+                // Guardar el nombre de usuario en SharedPreferences
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString(KEY_LAST_USER, username);
+                editor.apply();
+
                 // Mostrar el Toast personalizado
                 showCustomToast("Inicio de sesión exitoso");
 
@@ -51,6 +68,13 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(MainActivity.this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
             }
+        });
+
+        // Configurar botón de información del usuario
+        Button informacionButton = findViewById(R.id.button);
+        informacionButton.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, InfoUsuario.class);
+            startActivity(intent);
         });
     }
 

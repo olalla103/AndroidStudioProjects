@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">Hito7</string>
+    <string name="app_name">Hito 7</string>
+    <string name="menu_opciones">Opciones</string>
+    <string-array name="estilos_array">
+        <item>Femenino</item>
+        <item>Masculino</item>
+        <item>Neutro</item>
+    </string-array>
+
 </resources>

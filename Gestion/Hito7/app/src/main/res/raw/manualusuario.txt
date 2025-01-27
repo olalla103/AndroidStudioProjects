@@ -1,0 +1,78 @@
+1. Introducción
+La aplicación "Gestión de armario" permite gestionar un catálogo de prendas de ropa mediante funcionalidades de añadir, editar, eliminar y mostrar detalles de cada prenda. 
+2. Manual de usuario
+1. Introducción
+Gestión de armario es una aplicación diseñada para gestionar un almacén de ropa. Permite a los usuarios registrar prendas de ropa, visualizarlas en una lista organizada, buscar prendas específicas y realizar operaciones como añadir, editar y eliminar elementos.
+
+2. Requisitos del Sistema
+Sistema Operativo: Android 5.0 (Lollipop) o superior
+Espacio de almacenamiento: 50 MB de espacio libre
+Conexión a Internet: No es necesaria
+Resolución recomendada: 1080 x 1920 píxeles
+
+3. Pantalla de Inicio (Inicio de Sesión)
+Descripción
+La aplicación inicia con una pantalla de inicio de sesión que solicita el nombre de usuario y la contraseña.
+Pasos para Iniciar Sesión
+Introduce tu nombre de usuario en el campo correspondiente.
+Introduce tu contraseña en el segundo campo.
+Pulsa el botón "Entrar".
+Resultados
+Si las credenciales son correctas, se mostrará un mensaje "Inicio de sesión exitoso" y accederás a la Pantalla Principal.
+Si las credenciales son incorrectas, se mostrará un mensaje de error: "Usuario o contraseña incorrectos".
+4. Pantalla Principal (Lista de Prendas)
+Visualización de Prendas
+La lista principal muestra todas las prendas registradas en el almacén, incluyendo:
+Imagen de la prenda.
+Nombre de la prenda.
+Opciones adicionales (menú desplegable representado por tres puntos).
+Búsqueda de Prendas
+Pulsa en el icono de la lupa en la barra superior.
+Escribe el nombre de la prenda que deseas buscar.
+La lista se filtrará en tiempo real, mostrando solo las prendas que coincidan.
+Opciones Disponibles
+Cada prenda cuenta con un menú de opciones (tres puntos verticales):
+Ver descripción: Muestra una descripción detallada de la prenda.
+Editar: Permite modificar los datos de la prenda.
+Eliminar: Elimina la prenda de la lista.
+5. Añadir una Prenda
+Acceso a la Función
+Desde la Pantalla Principal, selecciona el botón "Añadir" (menú principal).
+Pasos para Añadir una Prenda
+Introduce el nombre de la prenda.
+Introduce el precio de la prenda.
+Selecciona el estilo de la prenda desde el desplegable (spinner).
+Selecciona la talla de la prenda (XS, S, M, L, XL).
+Añadir imagen (opcional):
+Pulsa en el botón "Añadir imagen".
+Selecciona una imagen de la galería.
+Pulsa el botón "Aceptar" para guardar la prenda.
+Resultado
+La nueva prenda aparecerá en la lista principal con todos los datos introducidos.
+6. Editar una Prenda
+Acceso a la Función
+Desde la Pantalla Principal, pulsa el menú de opciones (tres puntos) de la prenda que quieres editar.
+Selecciona la opción "Editar".
+Pasos para Editar una Prenda
+Modifica el nombre, precio, estilo o talla según sea necesario.
+Si quieres cambiar la imagen:
+Pulsa en "Añadir imagen" y selecciona una nueva imagen desde la galería.
+Pulsa el botón "Aceptar" para guardar los cambios.
+Resultado
+Los datos de la prenda se actualizarán en la lista principal.
+7. Eliminar una Prenda
+Acceso a la Función
+Desde la Pantalla Principal, pulsa el menú de opciones (tres puntos) de la prenda que quieres eliminar.
+Selecciona la opción "Eliminar".
+Resultado
+La prenda se eliminará de la lista. Esta acción no se puede deshacer.
+8. Resolución de Problemas
+Problema 1: No puedo iniciar sesión
+Causa: Usuario o contraseña incorrectos.
+Solución: Verifica que el nombre de usuario y la contraseña sean correctos. La aplicación es sensible a mayúsculas y minúsculas.
+Problema 2: No se muestra la imagen al añadir una prenda
+Causa: La imagen seleccionada no se guardó correctamente.
+Solución: Asegúrate de seleccionar una imagen válida desde la galería.
+Problema 3: La búsqueda no devuelve resultados
+Causa: Ninguna prenda coincide con el criterio de búsqueda.
+Solución: Verifica que el nombre introducido sea correcto.

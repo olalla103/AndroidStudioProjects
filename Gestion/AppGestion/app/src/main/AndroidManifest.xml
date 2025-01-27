@@ -10,14 +10,8 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/icono"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
+
         tools:targetApi="31">
-        <activity
-            android:name=".Fragmento3"
-            android:exported="false" />
-        <activity
-            android:name=".Fragmento1"
-            android:exported="false" />
         <activity
             android:name=".SplashActivity"
             android:exported="false" />
