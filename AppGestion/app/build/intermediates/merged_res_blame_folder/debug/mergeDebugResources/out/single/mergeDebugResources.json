@@ -1,0 +1,174 @@
+[
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\mipmap-hdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\drawable_eliminar.png.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\drawable\\eliminar.png"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\layout_custom_toast.xml.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\layout\\custom_toast.xml"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\menu_popup_menu.xml.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\menu\\popup_menu.xml"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\drawable_chaquetaacolchada_hombre.png.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\drawable\\chaquetaacolchada_hombre.png"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\drawable_spinner_background.xml.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\drawable\\spinner_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\mipmap-xhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\drawable_faldaplisadapicos_mujer.png.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\drawable\\faldaplisadapicos_mujer.png"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\drawable_chaquetacuero_hombre.png.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\drawable\\chaquetacuero_hombre.png"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\layout_activity_modificar_elemento.xml.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\layout\\activity_modificar_elemento.xml"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\drawable_anadir.png.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\drawable\\anadir.png"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\mipmap-xxxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\layout_activity_splash.xml.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\layout\\activity_splash.xml"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\mipmap-xhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\mipmap-mdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-pngs-27:\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\drawable_bolsomarron.png.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\drawable\\bolsomarron.png"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\menu_menu_item.xml.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\menu\\menu_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\mipmap-mdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\drawable_icono.jpg.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\drawable\\icono.jpg"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\xml\\backup_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\drawable_iconotrespuntos.png.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\drawable\\iconotrespuntos.png"
+    },
+    {
+        "merged": "com.example.appgestion.app-debug-31:/drawable_toast_background.xml.flat",
+        "source": "com.example.appgestion.app-main-33:/drawable/toast_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\drawable_camisetanegra_mujer.jpg.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\drawable\\camisetanegra_mujer.jpg"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\layout_entrada.xml.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\layout\\entrada.xml"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\mipmap-xxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\drawable_botasojales_mujer.png.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\drawable\\botasojales_mujer.png"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\drawable_tostada.jpg.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\drawable\\tostada.jpg"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\layout_activity_lista_elementos.xml.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\layout\\activity_lista_elementos.xml"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\drawable_imagen_defecto.jpg.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\drawable\\imagen_defecto.jpg"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\layout_activity_aniadir_elemento.xml.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\layout\\activity_aniadir_elemento.xml"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\drawable_toast_background.xml.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\drawable\\toast_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\drawable_ic_menu.png.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\drawable\\ic_menu.png"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\drawable_vaqueroballoon_mujer.png.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\drawable\\vaqueroballoon_mujer.png"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\mipmap-hdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-debug-31:\\drawable_vestidolentejuelas_mujer.jpg.flat",
+        "source": "C:\\Users\\olaya\\.gradle\\daemon\\8.7\\com.example.appgestion.app-main-33:\\drawable\\vestidolentejuelas_mujer.jpg"
+    }
+]

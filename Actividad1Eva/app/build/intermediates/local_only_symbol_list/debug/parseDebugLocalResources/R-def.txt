@@ -1,0 +1,18 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color white
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+id main
+id sp1
+id spinner
+id txt1
+layout activity_main
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+style Base.Theme.Actividad1Eva
+style Theme.Actividad1Eva
+xml backup_rules
+xml data_extraction_rules

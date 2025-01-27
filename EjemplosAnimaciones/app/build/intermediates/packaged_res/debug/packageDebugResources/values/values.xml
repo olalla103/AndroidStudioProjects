@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="aparicion">Aparición</string>
+    <string name="app_name">EjemplosAnimaciones</string>
+    <string name="fotobastet">fotoBastet</string>
+    <string name="rotacion">Rotación</string>
+    <string name="translaci_n">Translación</string>
+    <style name="Base.Theme.EjemplosAnimaciones" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="Theme.EjemplosAnimaciones" parent="Base.Theme.EjemplosAnimaciones"/>
+</resources>

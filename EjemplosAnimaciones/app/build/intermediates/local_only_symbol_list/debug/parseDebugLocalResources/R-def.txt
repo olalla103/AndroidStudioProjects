@@ -1,0 +1,30 @@
+R_DEF: Internal format may change without notice
+local
+anim aparece_desaparece
+anim rotacion
+anim traslacion
+color black
+color white
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+drawable img_bastet
+id button
+id button2
+id button3
+id imgBastet
+id main
+layout activity_aparece_desaparece
+layout activity_main
+layout activity_rotacion
+layout activity_traslasion
+mipmap ic_launcher
+mipmap ic_launcher_round
+string aparicion
+string app_name
+string fotobastet
+string rotacion
+string translaci_n
+style Base.Theme.EjemplosAnimaciones
+style Theme.EjemplosAnimaciones
+xml backup_rules
+xml data_extraction_rules

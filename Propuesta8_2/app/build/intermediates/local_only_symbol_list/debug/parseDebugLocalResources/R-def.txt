@@ -1,0 +1,24 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color white
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+drawable numero1
+drawable numero2
+drawable numero3
+id contenedor
+id contenedor2
+id main
+id tabLayout
+layout activity_main
+layout primero
+layout segundo
+layout tercero
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+style Base.Theme.Propuesta8_2
+style Theme.Propuesta8_2
+xml backup_rules
+xml data_extraction_rules
