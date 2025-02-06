@@ -133,7 +133,7 @@
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "C:/Users/olaya/AndroidStudioProjects/AppGestion/app/src/main/res/drawable",
-    "last_opened_file_path": "C:/Users/olaya/AndroidStudioProjects/Gestion/Hito7",
+    "last_opened_file_path": "C:/Users/olaya/PSP",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
@@ -239,8 +239,12 @@
       <updated>1732554690822</updated>
       <workItem from="1733806318417" duration="17000" />
       <workItem from="1734305802117" duration="9000" />
+      <workItem from="1738782814021" duration="120000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
