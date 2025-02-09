@@ -3,6 +3,7 @@ package com.example.appgestionpersistencia.OperacionesElementos;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.widget.ArrayAdapter;
@@ -15,8 +16,15 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 
 import com.example.appgestionpersistencia.R;
+
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class AniadirElemento extends AppCompatActivity {
 
@@ -26,7 +34,8 @@ public class AniadirElemento extends AppCompatActivity {
     private Button botonAceptar, botonCancelar;
     private static final int SELECCIONAR_IMAGEN = 1001;
     private String prendaImagenUri; // Almacena temporalmente la URI de la imagen seleccionada
-
+    private static final int REQUEST_IMAGE_CAPTURE = 1;
+    private Uri imageUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,7 +110,39 @@ public class AniadirElemento extends AppCompatActivity {
             setResult(RESULT_CANCELED);
             finish();
         });
+
+        Button botonAbrirCamara = findViewById(R.id.botonAbrirCamara);
+        botonAbrirCamara.setOnClickListener(v -> {
+            abrirCamara();
+        });
+
     }
+
+    private void abrirCamara() {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            // Crear un archivo para almacenar la imagen
+            File photoFile = crearArchivoImagen();
+            if (photoFile != null) {
+                imageUri = FileProvider.getUriForFile(this, "com.example.appgestionpersistencia.fileprovider", photoFile);
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+                startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
+            }
+        }
+    }
+
+    private File crearArchivoImagen() {
+        try {
+            String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
+            String imageFileName = "JPEG_" + timeStamp + "_";
+            File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+            return File.createTempFile(imageFileName, ".jpg", storageDir);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
 
     private String getSelectedTalla() {
         int selectedId = radioGroupTallas.getCheckedRadioButtonId();
@@ -119,9 +160,13 @@ public class AniadirElemento extends AppCompatActivity {
         if (requestCode == SELECCIONAR_IMAGEN && resultCode == RESULT_OK && data != null) {
             Uri imagenSeleccionada = data.getData();
             if (imagenSeleccionada != null) {
-                prendaImagenUri = imagenSeleccionada.toString(); // Guardar la URI como String
-                Log.d("DEBUG", "URI de la imagen seleccionada: " + prendaImagenUri);
+                prendaImagenUri = imagenSeleccionada.toString();
             }
+        } else if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            // Si la imagen fue tomada con éxito, guarda la URI
+            prendaImagenUri = imageUri.toString();
+            Log.d("DEBUG", "Imagen capturada URI: " + prendaImagenUri);
         }
     }
+
 }
