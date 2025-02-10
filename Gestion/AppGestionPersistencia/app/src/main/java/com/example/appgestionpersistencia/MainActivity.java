@@ -3,6 +3,7 @@ package com.example.appgestionpersistencia;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,9 +19,10 @@ import com.example.appgestionpersistencia.BBDD.DataBaseHelper;
 
 public class MainActivity extends AppCompatActivity {
 
-    private DataBaseHelper dbHelper; // Instancia de SQLite
-    private SharedPreferences sharedPreferences; // Instancia de SharedPreferences
+    private DataBaseHelper dbHelper;
+    private SharedPreferences sharedPreferences;
     private EditText usernameField, passwordField;
+    private MediaPlayer mediaPlayer; // Instancia para la música
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +40,14 @@ public class MainActivity extends AppCompatActivity {
         passwordField = findViewById(R.id.contrasenia);
         Button loginButton = findViewById(R.id.entrarButton);
 
-        // Cargar el último usuario conectado (si existe)
+        // Cargar el último usuario conectado
         String lastUsername = sharedPreferences.getString("lastUsername", "");
         if (!lastUsername.isEmpty()) {
             usernameField.setText(lastUsername);
         }
+
+        // Iniciar la música
+        iniciarMusica();
 
         // Configurar el botón de inicio de sesión
         loginButton.setOnClickListener(v -> {
@@ -50,11 +55,14 @@ public class MainActivity extends AppCompatActivity {
             String password = passwordField.getText().toString();
 
             if (dbHelper.validarUsuario(username, password)) {
-                // Guardar el último usuario conectado en SharedPreferences
+                // Guardar el último usuario conectado
                 sharedPreferences.edit().putString("lastUsername", username).apply();
 
                 // Mostrar el Toast personalizado
                 showCustomToast("Inicio de sesión exitoso");
+
+                // Detener la música antes de cambiar de pantalla
+                detenerMusica();
 
                 // Ir a la actividad de lista de elementos
                 Intent intent = new Intent(MainActivity.this, ListaElementos.class);
@@ -64,11 +72,35 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Insertar usuarios de prueba en la base de datos
+        // Insertar usuarios por defecto en la base de datos
         insertarUsuariosPorDefecto();
     }
 
-    // Método para insertar usuarios por defecto en la base de datos
+    // Método para iniciar la música
+    private void iniciarMusica() {
+        if (mediaPlayer == null) {
+            mediaPlayer = MediaPlayer.create(this, R.raw.yesandcortado);
+            mediaPlayer.setLooping(false); // Repetir en bucle
+            mediaPlayer.start();
+        }
+    }
+
+    // Método para detener la música
+    private void detenerMusica() {
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        detenerMusica(); // Asegurar que la música se detiene al cerrar la app
+    }
+
+    // Método para insertar usuarios por defecto
     private void insertarUsuariosPorDefecto() {
         dbHelper.insertarUsuario("olallalnc", "Towel4");
         dbHelper.insertarUsuario("inigolnc", "inigoFeo234");
@@ -78,19 +110,15 @@ public class MainActivity extends AppCompatActivity {
 
     // Método para mostrar el Toast personalizado
     private void showCustomToast(String message) {
-        // Inflar el diseño personalizado del Toast
         LayoutInflater inflater = getLayoutInflater();
         View layout = inflater.inflate(R.layout.custom_toast, findViewById(R.id.custom_toast_root));
 
-        // Configurar el texto del Toast
         TextView toastText = layout.findViewById(R.id.toast_text);
         toastText.setText(message);
 
-        // Configurar el icono si es necesario (opcional)
         ImageView toastIcon = layout.findViewById(R.id.toast_icon);
-        toastIcon.setImageResource(R.drawable.icono); // Cambia por el recurso de tu icono
+        toastIcon.setImageResource(R.drawable.icono);
 
-        // Crear y mostrar el Toast
         Toast toast = new Toast(getApplicationContext());
         toast.setDuration(Toast.LENGTH_SHORT);
         toast.setView(layout);

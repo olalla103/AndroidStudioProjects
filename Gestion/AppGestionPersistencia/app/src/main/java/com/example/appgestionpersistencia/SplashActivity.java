@@ -16,10 +16,6 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        // Inicializar MediaPlayer con la música de la carpeta raw
-        mediaPlayer = MediaPlayer.create(this, R.raw.yesandcortado);
-        mediaPlayer.setLooping(false); // No repetir la música
-        mediaPlayer.start(); // Iniciar la música
 
         // Redirigir a la actividad principal después de 3 segundos
         new Handler().postDelayed(() -> {
@@ -29,12 +25,4 @@ public class SplashActivity extends AppCompatActivity {
         }, 3000); // 3000 ms = 3 segundos
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (mediaPlayer != null) {
-            mediaPlayer.release(); // Liberar recursos del MediaPlayer
-            mediaPlayer = null;
-        }
-    }
 }
