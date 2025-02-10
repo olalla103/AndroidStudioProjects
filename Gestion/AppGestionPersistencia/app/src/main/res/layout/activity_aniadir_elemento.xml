@@ -17,6 +17,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/botonAbrirCamara"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="75dp"
+        android:text="Abrir Cámara"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
     <EditText
         android:id="@+id/nombrePrenda"
         android:layout_width="322dp"
@@ -148,8 +158,8 @@
         style="@style/MinimalButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="127dp"
-        android:layout_marginTop="23dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="28dp"
         android:text="Añadir Imagen"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
