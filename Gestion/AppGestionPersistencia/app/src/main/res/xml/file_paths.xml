@@ -4,6 +4,9 @@
         <external-path
             name="external_files"
             path="Pictures/" />
+        <external-files-path
+            name="images"
+            path="Android/data/com.example.appgestionpersistencia/files/Pictures/" />
     </paths>
 
 </PreferenceScreen>

@@ -1,7 +1,9 @@
 package com.example.appgestionpersistencia.OperacionesElementos;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -9,6 +11,7 @@ import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -18,6 +21,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
+import android.Manifest;
+
 import com.example.appgestionpersistencia.R;
 
 import java.io.File;
@@ -25,6 +30,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
 
 public class AniadirElemento extends AppCompatActivity {
 
@@ -34,8 +40,8 @@ public class AniadirElemento extends AppCompatActivity {
     private Button botonAceptar, botonCancelar;
     private static final int SELECCIONAR_IMAGEN = 1001;
     private String prendaImagenUri; // Almacena temporalmente la URI de la imagen seleccionada
-    private static final int REQUEST_IMAGE_CAPTURE = 1;
-    private Uri imageUri;
+    private static final int REQUEST_IMAGE_CAPTURE = 101;
+    private Uri photoUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +68,16 @@ public class AniadirElemento extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         estiloPrenda.setAdapter(adapter);
 
+        // Código para solicitar permisos si es necesario
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED ||
+                    checkSelfPermission(Manifest.permission.READ_MEDIA_IMAGES) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{
+                        Manifest.permission.CAMERA,
+                        Manifest.permission.READ_MEDIA_IMAGES
+                }, 100);
+            }
+        }
 
         // Configurar botón "Aceptar"
         botonAceptar.setOnClickListener(v -> {
@@ -113,30 +129,61 @@ public class AniadirElemento extends AppCompatActivity {
 
         Button botonAbrirCamara = findViewById(R.id.botonAbrirCamara);
         botonAbrirCamara.setOnClickListener(v -> {
+
             abrirCamara();
         });
 
+
     }
+
+
+    public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                                           int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 100) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, "Permiso concedido", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Permiso denegado", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+//    private void abrirCamara() {
+//        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//        if (intent.resolveActivity(getPackageManager()) != null) {
+//            File photoFile = crearArchivoImagen();
+//            if (photoFile != null) {
+//                photoUri = FileProvider.getUriForFile(this,
+//                        "com.example.appgestionpersistencia.fileprovider", photoFile);
+//                intent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
+//                startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
+//            } else {
+//                Log.e("abrirCamara", "Error creating image file");
+//            }
+//        } else {
+//            Log.e("abrirCamara", "No camera app available");
+//        }
+//    }
 
     private void abrirCamara() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (intent.resolveActivity(getPackageManager()) != null) {
-            // Crear un archivo para almacenar la imagen
             File photoFile = crearArchivoImagen();
             if (photoFile != null) {
-                imageUri = FileProvider.getUriForFile(this, "com.example.appgestionpersistencia.fileprovider", photoFile);
-                intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+                photoUri = FileProvider.getUriForFile(this,
+                        "com.example.appgestionpersistencia.fileprovider", photoFile);
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
                 startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
             }
         }
     }
 
+    // Método para crear el archivo de imagen
     private File crearArchivoImagen() {
+        File directorio = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         try {
-            String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
-            String imageFileName = "JPEG_" + timeStamp + "_";
-            File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-            return File.createTempFile(imageFileName, ".jpg", storageDir);
+            return File.createTempFile("IMG_", ".jpg", directorio);
         } catch (IOException ex) {
             ex.printStackTrace();
             return null;
@@ -154,19 +201,16 @@ public class AniadirElemento extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == SELECCIONAR_IMAGEN && resultCode == RESULT_OK && data != null) {
-            Uri imagenSeleccionada = data.getData();
-            if (imagenSeleccionada != null) {
-                prendaImagenUri = imagenSeleccionada.toString();
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            if (photoUri != null) {
+                ImageView imagenPrenda = findViewById(R.id.imagenPrenda);
+                imagenPrenda.setImageURI(photoUri);
             }
-        } else if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            // Si la imagen fue tomada con éxito, guarda la URI
-            prendaImagenUri = imageUri.toString();
-            Log.d("DEBUG", "Imagen capturada URI: " + prendaImagenUri);
         }
     }
+
 
 }

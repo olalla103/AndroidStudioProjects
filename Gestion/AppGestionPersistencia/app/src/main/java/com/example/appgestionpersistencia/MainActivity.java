@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private DataBaseHelper dbHelper;
     private SharedPreferences sharedPreferences;
     private EditText usernameField, passwordField;
-    private MediaPlayer mediaPlayer; // Instancia para la música
+    private static MediaPlayer mediaPlayer; // Usar static para que no se reinicie al rotar la pantalla
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
             usernameField.setText(lastUsername);
         }
 
-        // Iniciar la música
+        // **Iniciar la música si no está sonando**
         iniciarMusica();
 
         // Configurar el botón de inicio de sesión
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 // Mostrar el Toast personalizado
                 showCustomToast("Inicio de sesión exitoso");
 
-                // Detener la música antes de cambiar de pantalla
+                // **Detener la música antes de cambiar de pantalla**
                 detenerMusica();
 
                 // Ir a la actividad de lista de elementos
@@ -76,28 +76,31 @@ public class MainActivity extends AppCompatActivity {
         insertarUsuariosPorDefecto();
     }
 
-    // Método para iniciar la música
+    // **Método para iniciar la música sin que se reinicie**
     private void iniciarMusica() {
-        if (mediaPlayer == null) {
+        if (mediaPlayer == null) { // Si no existe, crear un nuevo MediaPlayer
             mediaPlayer = MediaPlayer.create(this, R.raw.yesandcortado);
-            mediaPlayer.setLooping(false); // Repetir en bucle
+            mediaPlayer.setLooping(true);
             mediaPlayer.start();
         }
     }
 
-    // Método para detener la música
+    // **Método para detener la música**
     private void detenerMusica() {
         if (mediaPlayer != null) {
-            mediaPlayer.stop();
             mediaPlayer.release();
             mediaPlayer = null;
         }
     }
 
+    // **Evitar que la música se detenga si el usuario solo cambia de orientación**
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        detenerMusica(); // Asegurar que la música se detiene al cerrar la app
+        // Solo detener la música si la app se cierra completamente
+        if (!isChangingConfigurations()) {
+            detenerMusica();
+        }
     }
 
     // Método para insertar usuarios por defecto
