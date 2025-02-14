@@ -120,42 +120,22 @@ public class ListaElementos extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
-            try {
-                // Recuperar los datos enviados desde AniadirElemento
-                String nombre = data.getStringExtra("nombre");
-                String estiloString = data.getStringExtra("estilo");
-                String talla = data.getStringExtra("talla");
-                double precio = data.getDoubleExtra("precio", 0.0);
-                int imagen = data.getIntExtra("imagen", R.drawable.imagen_defecto);
+            String nombre = data.getStringExtra("nombre");
+            String estiloString = data.getStringExtra("estilo");
+            String talla = data.getStringExtra("talla");
+            double precio = data.getDoubleExtra("precio", 0.0);
+            int imagen = data.getIntExtra("imagen", R.drawable.imagen_defecto);
+            String imagenUri = data.getStringExtra("imagenUri"); // 🔹 Obtiene la URI si existe
 
-                // Validar que no haya valores nulos
-                if (nombre == null || estiloString == null || talla == null) {
-                    Toast.makeText(this, "Datos incompletos recibidos", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                // Crear y añadir el nuevo objeto
+            if (nombre != null && estiloString != null && talla != null) {
                 Estilos estilo = Estilos.valueOf(estiloString);
                 PrendaRopa nuevaPrenda = new PrendaRopa(nombre, talla, estilo, precio, imagen);
+
+                if (imagenUri != null) {
+                    nuevaPrenda.setImagenUri(imagenUri); // 🔹 Asigna la imagen capturada
+                }
+
                 datos.add(nuevaPrenda);
-
-                // Notificar al adaptador
-                adaptador.notifyDataSetChanged();
-                Toast.makeText(this, "Prenda añadida: " + nombre, Toast.LENGTH_SHORT).show();
-            } catch (Exception e) {
-                Toast.makeText(this, "Error al añadir la prenda", Toast.LENGTH_SHORT).show();
-                e.printStackTrace();
-            }
-            // modificación para editar supuestamente
-        } else if (requestCode == 2 && resultCode == RESULT_OK && data != null) {
-            int position = data.getIntExtra("position", -1);
-            String estilo = data.getStringExtra("estilo");
-            String talla = data.getStringExtra("talla");
-
-            if (position >= 0 && estilo != null && talla != null) {
-                PrendaRopa prenda = datos.get(position);
-                prenda.setEstilo(Estilos.valueOf(estilo));
-                prenda.setTalla(talla);
                 adaptador.notifyDataSetChanged();
             }
         }

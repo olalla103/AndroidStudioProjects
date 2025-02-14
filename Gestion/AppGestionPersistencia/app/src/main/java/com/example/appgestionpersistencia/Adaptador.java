@@ -63,43 +63,18 @@ public class Adaptador extends BaseAdapter {
         }
 
         PrendaRopa prenda = datos.get(position);
-        // Configurar título de la prenda
         holder.titulo.setText(prenda.getNombre());
-        // Configurar la imagen
+
+        // 🔹 Mostrar imagen capturada o la predeterminada
         if (prenda.getImagenUri() != null) {
-            holder.imagen.setImageURI(Uri.parse(prenda.getImagenUri())); // Si tiene URI personalizada
+            holder.imagen.setImageURI(Uri.parse(prenda.getImagenUri()));
         } else {
-            holder.imagen.setImageResource(prenda.getImagen()); // Imagen predeterminada
+            holder.imagen.setImageResource(prenda.getImagen());
         }
-
-        // Configurar el botón del menú
-        holder.botonMenu.setOnClickListener(v -> {
-            PopupMenu popupMenu = new PopupMenu(context, holder.botonMenu);
-            popupMenu.inflate(R.menu.menu_item);
-
-            popupMenu.setOnMenuItemClickListener(item -> {
-                if (item.getItemId() == R.id.opcion_descripcion) {
-                    mostrarDescripcion(prenda);
-                    return true;
-                } else if (item.getItemId() == R.id.opcion_editar) {
-                    Intent intent = new Intent(context, ModificarElemento.class);
-                    intent.putExtra("position", position);
-                    intent.putExtra("estilo", prenda.getEstilo().name());
-                    intent.putExtra("talla", prenda.getTalla());
-                    ((ListaElementos) context).startActivityForResult(intent, 2);
-                    return true;
-                } else if (item.getItemId() == R.id.opcion_eliminar) {
-                    eliminarElemento(position);
-                    return true;
-                } else {
-                    return false;
-                }
-            });
-            popupMenu.show();
-        });
 
         return convertView;
     }
+
 
     private void eliminarElemento(int position) {
         datos.remove(position);

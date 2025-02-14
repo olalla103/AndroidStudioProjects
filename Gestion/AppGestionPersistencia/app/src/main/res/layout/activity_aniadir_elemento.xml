@@ -10,10 +10,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="99dp"
-        android:layout_marginTop="73dp"
+        android:layout_marginTop="44dp"
         android:layout_marginEnd="99dp"
         android:text="Introduzca el nombre de la prenda"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,6 +26,8 @@
         android:layout_marginEnd="75dp"
         android:text="Abrir Cámara"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imagenPrenda"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <EditText
@@ -45,7 +48,21 @@
         android:layout_marginEnd="103dp"
         android:text="Introduzca el precio de la prenda"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/botonAñadirImagen" />
+        app:layout_constraintTop_toBottomOf="@+id/imagenPrenda" />
+
+
+    <ImageView
+        android:id="@+id/imagenPrenda"
+        android:layout_width="129dp"
+        android:layout_height="122dp"
+        android:layout_marginTop="12dp"
+        android:contentDescription="Vista previa de la imagen"
+        android:scaleType="centerCrop"
+        android:src="@drawable/imagen_defecto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <EditText
         android:id="@+id/precioPrenda"
@@ -161,6 +178,8 @@
         android:layout_marginStart="64dp"
         android:layout_marginTop="28dp"
         android:text="Añadir Imagen"
+        app:layout_constraintEnd_toStartOf="@+id/imagenPrenda"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
